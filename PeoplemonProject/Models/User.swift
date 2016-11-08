@@ -60,17 +60,17 @@ class User : NetworkModel {
     
     // create an object from JSON
     required init(json: JSON) throws {
-        token = try? json.getString(at: Constants.User.token)
-        expiration = try? json.getString(at: Constants.User.expiration)
-        id = try? json.getString(at: Constants.User.userID)
-        email = try? json.getString(at: Constants.User.email)
-        hasRegistered = try? json.getBool(at: Constants.User.hasRegistered)
-        loginProvider  = try? json.getString(at: Constants.User.loginProvider)
-        fullName = try? json.getString(at: Constants.User.fullName)
-        avatarBase64 = try? json.getString(at: Constants.User.avatarBase64)
-        lastCheckInDateTime = try? json.getString(at: Constants.UserlastCheckInDateTime)
-        lastCheckInLatitude = try? json.getString(at: Constants.User.lastCheckInLatitude)
-        lastCheckInLongitude = try? json.getString(at: Constants.User.lastCheckInLongitude)
+        token = try? json.getString(at: Constants.People.token)
+        expiration = try? json.getString(at: Constants.People.expiration)
+        id = try? json.getString(at: Constants.People.userID)
+        email = try? json.getString(at: Constants.People.email)
+        hasRegistered = try? json.getBool(at: Constants.People.hasRegistered)
+        loginProvider  = try? json.getString(at: Constants.People.loginProvider)
+        fullName = try? json.getString(at: Constants.People.fullName)
+        avatarBase64 = try? json.getString(at: Constants.People.avatarBase64)
+        lastCheckInDateTime = try? json.getString(at: Constants.People.lastCheckInDateTime)
+        lastCheckInLatitude = try? json.getString(at: Constants.People.lastCheckInLatitude)
+        lastCheckInLongitude = try? json.getString(at: Constants.People.lastCheckInLongitude)
         
     }
     init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongtitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: Date) {
@@ -166,38 +166,38 @@ class User : NetworkModel {
         switch requestType {
         
         case .getUserInfo:
-            params[Constants.User.id] = id as AnyObject?
-            params[Constants.User.email] = email as AnyObject?
-            params[Constants.User.hasRegistered] = hasRegistered as AnyObject?
-            params[Constants.User.loginProvider] = loginProvider as AnyObject?
-            params[Constants.User.lastCheckInDateTime] = lastCheckInDateTime as AnyObject?
-            params[Constants.User.lastCheckInLongitude] = lastCheckInLongitude as AnyObject?
-            params[Constants.User.lastCheckInLatitude] = lastCheckInLatitude as AnyObject?
+            params[Constants.People.id] = id as AnyObject?
+            params[Constants.People.email] = email as AnyObject?
+            params[Constants.People.hasRegistered] = hasRegistered as AnyObject?
+            params[Constants.People.loginProvider] = loginProvider as AnyObject?
+            params[Constants.People.LastCheckInDateTime] = lastCheckInDateTime as AnyObject?
+            params[Constants.People.LastCheckInLongitude] = lastCheckInLongitude as AnyObject?
+            params[Constants.People.LastCheckInLatitude] = lastCheckInLatitude as AnyObject?
         
         case .postUserInfo:
-            params[Constants.User.fullname] = fullName as AnyObject?
-            params[Constants.User.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.fullname] = fullName as AnyObject?
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
     
         
         case .login:
-            params[Constants.User.email] = changePassword as AnyObject?
-            params[Constants.User.password] = username as AnyObject?
-            params[Constants.User.grantType] = grantType as AnyObject?
+            params[Constants.People.email] = changePassword as AnyObject?
+            params[Constants.People.password] = UserName as AnyObject?
+            params[Constants.People.grantType] = Grant_Type as AnyObject?
         
         case .changePassword:
-            params[Constants.User.oldPassword] = oldPassword as AnyObject?
-            params[Constants.User.newPassword] = newPassword as AnyObject?
-            params[Constants.User.confirmPassword] = confirmPassword as AnyObject?
+            params[Constants.People.oldPassword] = oldPassword as AnyObject?
+            params[Constants.People.newPassword] = newPassword as AnyObject?
+            params[Constants.People.confirmPassword] = confirmPassword as AnyObject?
             
         case .setPassword:
-            params[Constants.User.oldPassword] = oldPassword as AnyObject?
+            params[Constants.People.oldPassword] = oldPassword as AnyObject?
           
         case .register:
-            params[Constants.User.email] = email as AnyObject?
-            params[Constants.User.fullName] = fullName as AnyObject?
-            params[Constants.User.avatarBase64] = avatarBase64 as AnyObject?
-            params[Constants.User.apiKey] = apiKey as AnyObject?
-            params[Constants.User.password] = password as AnyObject?
+            params[Constants.People.email] = email as AnyObject?
+            params[Constants.People.fullName] = fullName as AnyObject?
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.apiKey] = apiKey as AnyObject?
+            params[Constants.People.password] = password as AnyObject?
       
     
         default:

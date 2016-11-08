@@ -20,6 +20,7 @@ class People : NetworkModel {
     var userId: String?
     var userName : String?
     var password: String?
+    var oldPassword: String?
     var email: String?
     var avatarBase64 : String?
     var latitude: Double?
@@ -146,53 +147,74 @@ class People : NetworkModel {
     }
     
     
-    func dateString() -> String {
-        if let date = Date {
-            return date.toString(.custom(Constants.monthDayYear))
-        }
-        return ""
-    }
-    
-    func dateDay() -> String {
-        if let date = Date {
-            if date.isThisWeek() {
-                return date.weekdayToString()
-            } else {
-                return dateString()
-            }
-        }
-        return ""
-    }
-    // Demo object isn't being posted to a server, so just return nil
+       // Demo object isn't being posted to a server, so just return nil
     func toDictionary() -> [String: AnyObject]? {
         
         var params: [String: AnyObject] = [:]
         switch requestType {
         
+        case .nearby:
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.username] = userName as AnyObject?
+            params[Constants.People.Longtitude] = longtitude as AnyObject?
+            params[Constants.People.Latitude] = latitude as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+
+        case .caught:
+
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.username] = userName as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+
+        case .catchPerson:
+            params[Constants.People.caughtUserId] = caughtUserId as AnyObject?
+            params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
+        
         case .checkin:
-        params[Constants.People.id] = id as AnyObject?
-        params[Constants.People.email] = email as AnyObject?
-        params[Constants.People.oldPassword] = oldPassword as AnyObject?
-        params[Constants.People.newPassword] = newPassword as AnyObject?
-        params[Constants.People.confirmPassword] = confirmPassword as AnyObject?
-        params[Constants.People.hasRegistered] = hasRegistered as AnyObject?
-        params[Constants.People.longinProvider] = loginProvider as AnyObject?
-        params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-        params[Constants.People.lastCheckInLatitude] = lastCheckInLatitude as AnyObject?
-        params[Constants.People.lastCheckInLongitude] = lastCheckInLongitude as AnyObject?
-        params[Constants.People.lastCheckInDateTime] = lastCheckInDateTime as AnyObject?
-        params[Constants.People.date] = date?.toString(.iso8601(nil)) as AnyObject?
+            params[Constants.People.Longtitude] = longtitude as AnyObject?
+            params[Constants.People.Latitude] = latitude as AnyObject?
+            
+        case .conversations:
+            params[Constants.People.conversationId] = avatarBase64 as AnyObject?
+            params[Constants.People.recipientId] = userName as AnyObject?
+            params[Constants.People.reipientName] = recipientName as AnyObject?
+            params[Constants.People.lastMessage] = lastMessage as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+            params[Constants.People.messageCount] = messageCount as AnyObject?
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.senderId] = senderId as AnyObject?
+            params[Constants.People.senderName] = senderName as AnyObject?
+            params[Constants.People.recipiantAvatar] = recipientName as AnyObject?
+            params[Constants.People.senderAvatarBase64] = senderAvatarBase64 as AnyObject?
+    
+    
         
         
-        switch requestType {
-        case .register:
-            params[Constants.People.email] = email as AnyObject?
+
+            
         default:
             break
         }
         
         return params
     }
-    
 }
+/*
+func dateString() -> String {
+    if let date = Date {
+        return date.toString(.custom(Constants.monthDayYear))
+    }
+    return ""
 }
+
+func dateDay() -> String {
+    if let date = Date {
+        if date.isThisWeek() {
+            return date.weekdayToString()
+        } else {
+            return dateString()
+        }
+    }
+    return ""
+}
+*/

@@ -36,10 +36,7 @@ struct Constants {
         static let userId = "userId"
         static let username = "username"
         static let fullName = "FullName"
-        
-        static let latitude = "latitude"
-        static let longtitude = "longtitude"
-        
+ 
         static let created = "2016-11-03T20:44:12.608Z"
         static let conversationId = "conversationId"
         static let recipientId = "recipientId"
@@ -60,6 +57,8 @@ struct Constants {
         static let loginProvider = "loginProvider"
         
         static let AvatarBase64 = "avatarBase64"
+        static let senderAvatarBase64 = "senderAvatarBase64"
+        static let recipientAvatarBase64 = "recipientAvatarBase64"
         
         static let LastCheckInLongitude = "0"
         static let LastCheckInLatitude = "0"
@@ -72,10 +71,8 @@ struct Constants {
 
         static let userID = "UserId"
         static let userName = "UserName"
-        static let avatarBase64 = "AvatarBase64"
+   
         
-        static let email = "Email"
-        static let username = "Username"
         static let fullname = "fullname"
         static let password = "password"
         
@@ -84,29 +81,9 @@ struct Constants {
         
         static let changePassword = "changepassword"
         static let setPassword = "setPassword"
-        static let confirmPassword = "confirmPassword"
-        static let hasRegistered = "hasRegistered"
-        static let oldPassword = "oldPassword"
-        static let newPassword = "newPassword"
-        
-        static let Longitude = "0"
+        static let Longtitude = "0"
         static let Latitude = "0"
         
-        static let Created = "2016-11-03T20:44:12.608Z"
-        static let conversationId = "ConversationId"
-        static let recipientId = "RecipientId"
-        static let reipientName = "RecipientName"
-        static let lastMessage = "LastMessage"
-        static let messageCount = "MessageCount"
-        static let senderId = "SenderId"
-        static let senderName = "SenderName"
-        static let recipiantAvatar = "RecipiantAvatar"
-        static let senderAvatar = "SenderAvatar"
-     
-        static let apiKey = "iOSandroid301november2016"
-        static let token = "token"
-        static let grantType = "password"
-        static let expiration = "expiration"
      
     }
 }
