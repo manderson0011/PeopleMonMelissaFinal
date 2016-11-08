@@ -31,46 +31,74 @@ struct Constants {
     // Step 10: User Constants
     struct People {
         
-        static let id = "id"
-        static let Email = "email"
+        static let id = "Id"
+        static let email = "Email"
+        static let userId = "userId"
+        static let username = "username"
+        static let fullName = "FullName"
+        static let latitude = "latitude"
+        static let longtitude = "longtitude"
+        
+        static let created = "2016-11-03T20:44:12.608Z"
+        static let conversationId = "conversationId"
+        static let recipientId = "recipientId"
+        static let reipientName = "recipientName"
+        static let lastMessage = "lastMessage"
+        static let message = "message"
+        static let messageCount = "messageCount"
+        static let senderId = "senderId"
+        static let senderName = "senderName"
+        static let recipiantAvatar = "recipiantAvatar"
+        static let senderAvatar = "senderAvatar"
+        
+        static let avatarBase64 = "avatarBase64"
         static let oldPassword = "oldPassword"
         static let newPassword = "newPassword"
         static let confirmPassword = "confirmPassword"
-        static let hasRegistered = "hasRegistered"
+        static let hasRegistered = "HasRegistered"
         static let loginProvider = "loginProvider"
-        static let avatarBase64 = "avatarBase64"
-        static let lastCheckInLongitude = "0"
-        static let lastCheckInLatitude = "0"
-        static let lastCheckInDateTime = "0"
+        static let AvatarBase64 = "avatarBase64"
+        static let LastCheckInLongitude = "0"
+        static let LastCheckInLatitude = "0"
+        static let LastCheckInDateTime = "0"
         
         
     }
     
     // Step 11: User Constants
     struct User{
-        static let userID = "userId"
-        static let avatarBase64 = "avatarBase64"
-        static let longitude = "0"
-        static let latitude = "0"
-        static let created = "2016-11-03T20:44:12.608Z"
-        static let conversationId = "conversationId"
-        static let recipientId = "recipientId"
-        static let reipientName = "recipientName"
-        static let lastMessage = "lastMessage"
-        static let messageCount = "messageCount"
-        static let senderId = "senderId"
-        static let senderName = "senderName"
-        static let recipiantAvatar = "recipiantAvatar"
-        static let senderAvatar = "senderAvatar"
-        static let userId = "userId"
-        static let email = "email"
-        static let username = "username"
+        static let userID = "UserId"
+        static let userName = "UserName"
+        static let avatarBase64 = "AvatarBase64"
+        static let email = "Email"
+        static let username = "Username"
         static let fullname = "fullname"
         static let password = "password"
+        static let caughtUserId = "CaughtUserId"
+        static let radiusInMeters = "RadiusInMeters"
+        static let changePassword = "changepassword"
+        static let setPassword = "setPassword"
+        static let confirmPassword = "confirmPassword"
+        static let hasRegistered = "hasRegistered"
+        
+        static let Longitude = "0"
+        static let Latitude = "0"
+        static let Created = "2016-11-03T20:44:12.608Z"
+        static let conversationId = "ConversationId"
+        static let recipientId = "RecipientId"
+        static let reipientName = "RecipientName"
+        static let lastMessage = "LastMessage"
+        static let messageCount = "MessageCount"
+        static let senderId = "SenderId"
+        static let senderName = "SenderName"
+        static let recipiantAvatar = "RecipiantAvatar"
+        static let senderAvatar = "SenderAvatar"
+     
         static let apiKey = "iOSandroid301november2016"
         static let token = "token"
-        
-        
+        static let grantType = "password"
+        static let expiration = "expiration"
+     
     }
 }
 

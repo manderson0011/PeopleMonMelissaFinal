@@ -24,7 +24,7 @@ class UserStore {
         //call web server to login
         WebServices.shared.authUser(loginUser) {(user, error) in
             if let user = user {
-                WebServices.shared.setAuthToken(user.token, expiration: user.expiration)
+                WebServices.shared.setAuthToken(User.token, expiration: user.expiration)
                 completion(true, nil)
             }else{
                 completion(false, error)
@@ -36,7 +36,7 @@ class UserStore {
         
         WebServices.shared.authUser(registerUser) {(user, error) in
             if let User = user {
-                WebServices.shared.setAuthToken(user?.token, expiration: User.expiration)
+                WebServices.shared.setAuthToken(User.token, expiration: User.expiration)
                 completion(true, nil)
             }else{
                 completion(false, error)
