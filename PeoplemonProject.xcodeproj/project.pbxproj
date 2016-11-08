@@ -22,6 +22,7 @@
 		2AC65C0C1DD154890070CCEA /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C0B1DD154890070CCEA /* UserStore.swift */; };
 		2AC65C0F1DD154DB0070CCEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C0E1DD154DB0070CCEA /* LoginViewController.swift */; };
 		2AC65C111DD154F00070CCEA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C101DD154F00070CCEA /* RegisterViewController.swift */; };
+		2AC65C141DD156860070CCEA /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65C131DD156860070CCEA /* LoginStoryboard.storyboard */; };
 		410B9FC9B6E7D94A0E792A7F /* Pods_PeoplemonProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		2AC65C0B1DD154890070CCEA /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStore.swift; path = Components/UserStore.swift; sourceTree = "<group>"; };
 		2AC65C0E1DD154DB0070CCEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		2AC65C101DD154F00070CCEA /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		2AC65C131DD156860070CCEA /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginStoryboard.storyboard; path = Storyboards/LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		2AC65C151DD156A10070CCEA /* ProjectPeoplemon.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ProjectPeoplemon.entitlements; sourceTree = "<group>"; };
 		D8AA33DC2AFE4DD25B82A716 /* Pods-PeoplemonProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D4DF0F311B5FB3D035257D /* Pods-PeoplemonProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +66,7 @@
 		2AC65BDB1DD152CE0070CCEA = {
 			isa = PBXGroup;
 			children = (
+				2AC65C151DD156A10070CCEA /* ProjectPeoplemon.entitlements */,
 				2AC65BE61DD152CE0070CCEA /* PeoplemonProject */,
 				2AC65BE51DD152CE0070CCEA /* Products */,
 				D590F1FA1D05A987C2253A02 /* Pods */,
@@ -81,6 +85,7 @@
 		2AC65BE61DD152CE0070CCEA /* PeoplemonProject */ = {
 			isa = PBXGroup;
 			children = (
+				2AC65C121DD156660070CCEA /* StoryBoards */,
 				2AC65C0D1DD1549F0070CCEA /* Controllers */,
 				2AC65C061DD154480070CCEA /* Components */,
 				2AC65BFF1DD153EF0070CCEA /* Networking */,
@@ -131,6 +136,14 @@
 				2AC65C101DD154F00070CCEA /* RegisterViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2AC65C121DD156660070CCEA /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				2AC65C131DD156860070CCEA /* LoginStoryboard.storyboard */,
+			);
+			name = StoryBoards;
 			sourceTree = "<group>";
 		};
 		89A39A92D559851DA2990CB0 /* Frameworks */ = {
@@ -215,6 +228,7 @@
 				2AC65BF21DD152CE0070CCEA /* LaunchScreen.storyboard in Resources */,
 				2AC65BEF1DD152CE0070CCEA /* Assets.xcassets in Resources */,
 				2AC65BED1DD152CE0070CCEA /* Main.storyboard in Resources */,
+				2AC65C141DD156860070CCEA /* LoginStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

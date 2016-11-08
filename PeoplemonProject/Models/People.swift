@@ -57,7 +57,7 @@ class People : NetworkModel {
         
     }
     
-    init(username: String, password: String) {
+    init(login: String, username: String, password: String) {
         self.login = login
         self.username = username
         self.password = password

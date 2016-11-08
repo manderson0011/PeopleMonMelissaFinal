@@ -30,6 +30,7 @@ class User : NetworkModel {
     var lastCheckInDateTime: Date?
     var apiKey : String?
     var token : String?
+    var expiration: String?
     
     
     
@@ -54,9 +55,9 @@ class User : NetworkModel {
         token = try? json.getString(at: Constants.User.token)
     }
     
-    init(userId: String, changePassword: String, setPassword: String) {
+    init(userId: String, password: String, changePassword: String) {
         self.userId = userId
-        self.setPassword = setPassword
+        self.password = password
         self.changePassword = changePassword
         requestType = .login
     }
@@ -67,7 +68,12 @@ class User : NetworkModel {
         self.email = email
         requestType = .register
     }
-    
+    init(setPassword: String, password: String, email: String) {
+        self.setPassword = setPassword
+        self.password = password
+        self.email = email
+        requestType = .changePassword
+    }
     init(userId: String) {
         self.userId = userId
     }
