@@ -19,8 +19,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,9 +69,9 @@ class RegisterViewController: UIViewController {
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
-        let user = userInfo(username: username, password: password, email: email)
+        let user = User(email: email, password: password, changePassword: confirm)
         
-        UserStore.shared.register(UserInfo) { (success, error) in
+        UserStore.shared.register(User) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             
             if success{

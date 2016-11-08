@@ -16,6 +16,7 @@ import AFDateHelper
 class People : NetworkModel {
     
     var login: String?
+    var id: String?
     var userId: String?
     var userName : String?
     var password: String?
@@ -23,7 +24,7 @@ class People : NetworkModel {
     var avatarBase64 : String?
     var latitude: Double?
     var longtitude: Double?
-    var created: String?
+    var created: Date
     var conversationId: Int?
     var recipientId: String?
     var recipientName: String?
@@ -67,7 +68,7 @@ class People : NetworkModel {
         self.userId = userId
         self.latitude = latitude
         self.longtitude = longtitude
-        self.created =
+        self.created = created
         requestType = .nearby
     }
     
@@ -86,8 +87,8 @@ class People : NetworkModel {
     }
     
     init(latitude: Double, longitude: Double) {
-        self.longtitude = longtitude
-        self.latitude = latitude
+        self.longtitude = 0
+        self.latitude = 0
         requestType = .checkin
     }
     init(conversationId: Int, recipientId: String, recipientName: String, lastMessage: Date, created: Date, messageCount: Int, avatarBase64: String, senderId: String, senderName: String, recipientAvatarBase64: String, senderAvatarBase64: String) {
@@ -97,7 +98,7 @@ class People : NetworkModel {
         self.recipientId = recipientId
         self.lastMessage = lastMessage
         self.created = created
-        self.messageCount = messageCount
+        self.messageCount = 0
         self.senderId = senderId
         self.senderName = senderName
         self.recipientAvatarBase64 = recipientAvatarBase64
@@ -146,14 +147,14 @@ class People : NetworkModel {
     
     
     func dateString() -> String {
-        if let date = date {
+        if let date = Date {
             return date.toString(.custom(Constants.monthDayYear))
         }
         return ""
     }
     
     func dateDay() -> String {
-        if let date = date {
+        if let date = Date {
             if date.isThisWeek() {
                 return date.weekdayToString()
             } else {
@@ -193,4 +194,5 @@ class People : NetworkModel {
         return params
     }
     
+}
 }

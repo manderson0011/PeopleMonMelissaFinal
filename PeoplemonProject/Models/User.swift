@@ -62,9 +62,9 @@ class User : NetworkModel {
     required init(json: JSON) throws {
         token = try? json.getString(at: Constants.User.token)
         expiration = try? json.getString(at: Constants.User.expiration)
-        id = try? json.getString(at: Constants.User.id)
+        id = try? json.getString(at: Constants.User.userID)
         email = try? json.getString(at: Constants.User.email)
-        hasRegistered = try? json.getString(at: Constants.User.hasRegistered)
+        hasRegistered = try? json.getBool(at: Constants.User.hasRegistered)
         loginProvider  = try? json.getString(at: Constants.User.loginProvider)
         fullName = try? json.getString(at: Constants.User.fullName)
         avatarBase64 = try? json.getString(at: Constants.User.avatarBase64)
@@ -89,9 +89,9 @@ class User : NetworkModel {
         requestType = .login
     }
     
-    init(email: String, fullName: String, AvatarBase64: String, password: String, apiKey: String) {
+    init(email: String, fullName: String, avatarBase64: String, password: String, apiKey: String) {
         self.fullName = fullName
-        self.AvatarBase64 = AvatarBase64
+        self.avatarBase64 = avatarBase64
         self.password = password
         self.email = email
         self.apiKey = apiKey
@@ -164,19 +164,42 @@ class User : NetworkModel {
     func toDictionary() -> [String: AnyObject]? {
         var params: [String: AnyObject] = [:]
         switch requestType {
-        case .getUserInfo
-                 
-        case .register:
-        params[Constants.User.fullname] = fullName as AnyObject?
-        params[Constants.User.email] = email as AnyObject?
-        params[Constants.User.password] = password as AnyObject?
-        params[Constants.User.avatarBase64] = avatarBase64 as AnyObject?
-        params[Constants.User.apiKey] = apiKey as AnyObject?
+        
+        case .getUserInfo:
+            params[Constants.User.id] = id as AnyObject?
+            params[Constants.User.email] = email as AnyObject?
+            params[Constants.User.hasRegistered] = hasRegistered as AnyObject?
+            params[Constants.User.loginProvider] = loginProvider as AnyObject?
+            params[Constants.User.lastCheckInDateTime] = lastCheckInDateTime as AnyObject?
+            params[Constants.User.lastCheckInLongitude] = lastCheckInLongitude as AnyObject?
+            params[Constants.User.lastCheckInLatitude] = lastCheckInLatitude as AnyObject?
+        
+        case .postUserInfo:
+            params[Constants.User.fullname] = fullName as AnyObject?
+            params[Constants.User.avatarBase64] = avatarBase64 as AnyObject?
+    
         
         case .login:
-        params[Constants.User.email] = changePassword as AnyObject?
-        params[Constants.User.password] = username as AnyObject?
-        params[Constants.User.grantType] = grantType as AnyObject?
+            params[Constants.User.email] = changePassword as AnyObject?
+            params[Constants.User.password] = username as AnyObject?
+            params[Constants.User.grantType] = grantType as AnyObject?
+        
+        case .changePassword:
+            params[Constants.User.oldPassword] = oldPassword as AnyObject?
+            params[Constants.User.newPassword] = newPassword as AnyObject?
+            params[Constants.User.confirmPassword] = confirmPassword as AnyObject?
+            
+        case .setPassword:
+            params[Constants.User.oldPassword] = oldPassword as AnyObject?
+          
+        case .register:
+            params[Constants.User.email] = email as AnyObject?
+            params[Constants.User.fullName] = fullName as AnyObject?
+            params[Constants.User.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.User.apiKey] = apiKey as AnyObject?
+            params[Constants.User.password] = password as AnyObject?
+      
+    
         default:
             break
         }
