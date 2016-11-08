@@ -91,10 +91,22 @@
                         <barButtonItem key="leftBarButtonItem" image="logout" id="p6p-fH-d5F"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="wRn-hY-71n"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="fbQ-bJ-rMr" kind="presentation" identifier="PresentLogin" id="SV6-3c-44V"/>
+                        <segue destination="fbQ-bJ-rMr" kind="presentation" identifier="PresentLoginNoAnimation" animates="NO" id="W86-EN-kbe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055.2" y="123.68815592203899"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="hty-a3-omo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="fbQ-bJ-rMr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yzc-eq-W8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="529"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vfY-U5-t0d">
@@ -136,4 +148,7 @@
     <resources>
         <image name="logout" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="W86-EN-kbe"/>
+    </inferredMetricsTieBreakers>
 </document>

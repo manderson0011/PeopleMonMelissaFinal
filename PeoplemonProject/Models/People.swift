@@ -13,7 +13,7 @@ import Freddy
 import AFDateHelper
 
 // Just a test object to excercise the network stack
-class People : NetworkModel {
+class People: NetworkModel {
     
     var login: String?
     var id: String?
@@ -25,23 +25,24 @@ class People : NetworkModel {
     var avatarBase64 : String?
     var latitude: Double?
     var longtitude: Double?
-    var created: Date
-    var conversationId: Int?
+    var created: String?
+    var conversationId: String?
     var recipientId: String?
     var recipientName: String?
-    var lastMessage: Date?
+    var lastMessage: String?
     var messageCount: Int?
     var senderId: String?
     var senderName: String?
     var recipientAvatar: String?
     var senderAvatar: String?
-    var radius: String?
+    var radius: Double?
     var grant_type: String?
     var expiration: Int?
     var caughtUserId: Int?
     var radiusInMeters: Double?
     var recipientAvatarBase64: String?
     var senderAvatarBase64: String?
+    
     
     // Request Type
     enum RequestType {
@@ -50,8 +51,8 @@ class People : NetworkModel {
         case catchPerson
         case caught
         case conversations
-        case conversation
         case register
+        case login
         
     }
     var requestType = RequestType.nearby
@@ -61,10 +62,32 @@ class People : NetworkModel {
     
     // create an object from JSON
     required init(json: JSON) throws {
-        grant_type = try? json.getString(at: Constants.People.token)
+        userId = try? json.getString(at: Constants.People.userId)
+        userName = try? json.getString(at: Constants.People.userName)
+        avatarBase64 = try? json.getString(at: Constants.People.avatarBase64)
+        latitude = try? json.getDouble(at: Constants.People.latitude)
+        longtitude = try? json.getDouble(at: Constants.People.longtitude)
+        created = try? json.getString(at: Constants.People.created)
+        radiusInMeters = try? json.getDouble(at: Constants.People.radiusInMeters)
+        caughtUserId = try? json.getInt(at: Constants.People.caughtUserId)
+        conversationId = try? json.getString(at: Constants.People.conversationId)
+        recipientId = try? json.getString(at: Constants.People.recipientId)
+        recipientName = try? json.getString(at: Constants.People.recipientName)
+        lastMessage = try? json.getString(at: Constants.People.lastMessage)
+        
+        messageCount = try? json.getInt(at: Constants.People.messageCount)
+        senderId = try? json.getString(at: Constants.People.senderId)
+        senderName = try? json.getString(at: Constants.People.senderName)
+        recipientAvatarBase64 = try? json.getString(at: Constants.People.recipientAvatarBase64)
+        senderAvatarBase64 = try? json.getString(at: Constants.People.senderAvatarBase64)
+        grant_type = try? json.getString(at: Constants.People.grantType)
+        expiration = try? json.getInt(at: Constants.People.expiration)
     }
     
-    init(avatarBase64: String, userName: String, userId: String, longtitude: Double, latitude: Double, created: Date ) {
+    
+    
+    
+    init(avatarBase64: String, userName: String, userId: String, longtitude: Double, latitude: Double, created: String ) {
         self.avatarBase64 = avatarBase64
         self.userId = userId
         self.latitude = latitude
@@ -73,13 +96,18 @@ class People : NetworkModel {
         requestType = .nearby
     }
     
+    init(latitude: Double, longitude: Double) {
+        self.longtitude = 0
+        self.latitude = 0
+        requestType = .checkin
+    }
     init(caughtUserId: Int, radiusInMeters: Double) {
         self.caughtUserId = caughtUserId
         self.radiusInMeters = radiusInMeters
         requestType = .catchPerson
     }
     
-    init(userId: String, avatarBase64: String, created: Date,userName: String) {
+    init(userId: String, avatarBase64: String, created: String,userName: String) {
         self.userId = userId
         self.userName = userName
         self.avatarBase64 = avatarBase64
@@ -87,12 +115,8 @@ class People : NetworkModel {
         requestType = .caught
     }
     
-    init(latitude: Double, longitude: Double) {
-        self.longtitude = 0
-        self.latitude = 0
-        requestType = .checkin
-    }
-    init(conversationId: Int, recipientId: String, recipientName: String, lastMessage: Date, created: Date, messageCount: Int, avatarBase64: String, senderId: String, senderName: String, recipientAvatarBase64: String, senderAvatarBase64: String) {
+    
+    init(conversationId: String, recipientId: String, recipientName: String, lastMessage: String, created: String, messageCount: Int, avatarBase64: String, senderId: String, senderName: String, recipientAvatarBase64: String, senderAvatarBase64: String) {
         
         self.avatarBase64 = avatarBase64
         self.conversationId = conversationId
@@ -114,16 +138,16 @@ class People : NetworkModel {
         switch requestType {
         case .nearby:
             return .get
-        case .caught:
-            return .get
-        case .conversations:
-            return .get
-        case .conversation:
-            return .get
         case .checkin:
             return .post
         case .catchPerson:
             return .post
+            //       case .conversation:
+        //           return .get
+        case .caught:
+            return .get
+        case .conversations:
+            return .get
         default:
             return .post
         }
@@ -134,87 +158,99 @@ class People : NetworkModel {
         switch requestType {
         case .nearby:
             return "/v1/User/Nearby"
-        case .register:
-            return "/api/Account/Register"
+        case .checkin:
+            return "/v1/User/CheckIn"
+        case .catchPerson:
+            return "/v1/User/Catch"
         case .caught:
             return "/v1/User/Caught"
-        case .conversation:
-            return "/v1/User/Conversation"
         case .conversations:
             return "/v1/User/Conversations"
-        case .catchPerson:
-            return "/v1/User/Catch"        }
-    }
-    
-    
-       // Demo object isn't being posted to a server, so just return nil
-    func toDictionary() -> [String: AnyObject]? {
-        
-        var params: [String: AnyObject] = [:]
-        switch requestType {
-        
-        case .nearby:
-            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-            params[Constants.People.username] = userName as AnyObject?
-            params[Constants.People.Longtitude] = longtitude as AnyObject?
-            params[Constants.People.Latitude] = latitude as AnyObject?
-            params[Constants.People.created] = created as AnyObject?
-
-        case .caught:
-
-            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-            params[Constants.People.username] = userName as AnyObject?
-            params[Constants.People.created] = created as AnyObject?
-
-        case .catchPerson:
-            params[Constants.People.caughtUserId] = caughtUserId as AnyObject?
-            params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
-        
-        case .checkin:
-            params[Constants.People.Longtitude] = longtitude as AnyObject?
-            params[Constants.People.Latitude] = latitude as AnyObject?
+        case .login:
+            return "/token"
+        case .register:
+            return "/api/Account/Register"
             
-        case .conversations:
-            params[Constants.People.conversationId] = avatarBase64 as AnyObject?
-            params[Constants.People.recipientId] = userName as AnyObject?
-            params[Constants.People.reipientName] = recipientName as AnyObject?
-            params[Constants.People.lastMessage] = lastMessage as AnyObject?
-            params[Constants.People.created] = created as AnyObject?
-            params[Constants.People.messageCount] = messageCount as AnyObject?
-            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-            params[Constants.People.senderId] = senderId as AnyObject?
-            params[Constants.People.senderName] = senderName as AnyObject?
-            params[Constants.People.recipiantAvatar] = recipientName as AnyObject?
-            params[Constants.People.senderAvatarBase64] = senderAvatarBase64 as AnyObject?
-    
-    
-        
-        
-
+            //      case .conversation:
+            //        return "/v1/User/Conversation"
             
-        default:
-            break
+            
         }
-        
-        return params
     }
-}
+        
+        // Demo object isn't being posted to a server, so just return nil
+        func toDictionary() -> [String: AnyObject]? {
+            
+            var params: [String: AnyObject] = [:]
+            switch requestType {
+                
+            case .nearby:
+                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+                params[Constants.People.username] = userName as AnyObject?
+                params[Constants.People.longtitude] = longtitude as AnyObject?
+                params[Constants.People.latitude] = latitude as AnyObject?
+                params[Constants.People.created] = created as AnyObject?
+               
+                return params
+                
+            case .caught:
+                
+                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+                params[Constants.People.username] = userName as AnyObject?
+                params[Constants.People.created] = created as AnyObject?
+              
+                return params
+                
+            case .catchPerson:
+                params[Constants.People.caughtUserId] = caughtUserId as AnyObject?
+                params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
+                
+                return params
+            
+            case .checkin:
+                params[Constants.People.longtitude] = longtitude as AnyObject?
+                params[Constants.People.latitude] = latitude as AnyObject?
+                
+                return params
+                
+            case .conversations:
+                params[Constants.People.conversationId] = avatarBase64 as AnyObject?
+                params[Constants.People.recipientId] = userName as AnyObject?
+                params[Constants.People.reipientName] = recipientName as AnyObject?
+                params[Constants.People.lastMessage] = lastMessage as AnyObject?
+                params[Constants.People.created] = created as AnyObject?
+                params[Constants.People.messageCount] = messageCount as AnyObject?
+                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+                params[Constants.People.senderId] = senderId as AnyObject?
+                params[Constants.People.senderName] = senderName as AnyObject?
+                params[Constants.People.recipiantAvatar] = recipientName as AnyObject?
+                params[Constants.People.senderAvatarBase64] = senderAvatarBase64 as AnyObject?
+                
+                return params
+                
+            default:
+                return nil
+            }
+            
+        }
+    }
+
 /*
-func dateString() -> String {
-    if let date = Date {
-        return date.toString(.custom(Constants.monthDayYear))
-    }
-    return ""
-}
-
-func dateDay() -> String {
-    if let date = Date {
-        if date.isThisWeek() {
-            return date.weekdayToString()
-        } else {
-            return dateString()
-        }
-    }
-    return ""
-}
-*/
+ func dateString() -> String {
+ if let date = Date {
+ return date.toString(.custom(Constants.monthDayYear))
+ }
+ return ""
+ }
+ 
+ func dateDay() -> String {
+ if let date = Date {
+ if date.isThisWeek() {
+ return date.weekdayToString()
+ } else {
+ return dateString()
+ }
+ }
+ return ""
+ }
+ */

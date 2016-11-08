@@ -31,8 +31,8 @@ struct Constants {
     // Step 10: User Constants
     struct People {
         
-        static let id = "id"
-        static let email = "Email"
+        static let id = "Id"
+        static let email = "email"
         static let userId = "userId"
         static let username = "username"
         static let fullName = "FullName"
@@ -59,6 +59,7 @@ struct Constants {
         static let AvatarBase64 = "avatarBase64"
         static let senderAvatarBase64 = "senderAvatarBase64"
         static let recipientAvatarBase64 = "recipientAvatarBase64"
+        static let recipientName = "recipientName"
         
         static let LastCheckInLongitude = "0"
         static let LastCheckInLatitude = "0"
@@ -81,8 +82,8 @@ struct Constants {
         
         static let changePassword = "changepassword"
         static let setPassword = "setPassword"
-        static let Longtitude = "0"
-        static let Latitude = "0"
+        static let longtitude = "0"
+        static let latitude = "0"
         
      
     }

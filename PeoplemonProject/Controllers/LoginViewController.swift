@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     
     @IBAction func LogInTab(_ sender: Any) {
         
-        guard let username = userNameTextField.text, username != "" else {
+        guard let email = userNameTextField.text, email != "" else {
             //show earror
             let alert = Utils.createAlert("Login Error", message: "Please provide a user name", dismissButtonTitle: "Close")
             present(alert, animated: true, completion: nil)
@@ -33,9 +33,9 @@ class LogInViewController: UIViewController {
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
-        let user = User(username: username, password: password)
+        let user = User(email: email, password: password, grantType: "password")
         
-        UserStore.shared.register(user) { (success, error) in
+        UserStore.shared.login(user) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             
             if success{

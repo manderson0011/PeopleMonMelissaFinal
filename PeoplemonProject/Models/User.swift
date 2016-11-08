@@ -16,6 +16,7 @@ class User : NetworkModel {
 
 
     var id : String?
+    var username: String?
     var email : String?
     var hasRegistered: Bool?
     var loginProvider: String?
@@ -23,7 +24,7 @@ class User : NetworkModel {
     var avatarBase64: String?
     var lastCheckInLongitude: Double?
     var lastCheckInLatitude: Double?
-    var lastCheckInDateTime: Date?
+    var lastCheckInDateTime: String?
     
     var oldPassword: String?
     var newPassword: String?
@@ -36,7 +37,7 @@ class User : NetworkModel {
     var apiKey : String?
     var token : String?
     var expiration: String?
-   
+    var grantType: String?
   
     
     
@@ -68,12 +69,12 @@ class User : NetworkModel {
         loginProvider  = try? json.getString(at: Constants.People.loginProvider)
         fullName = try? json.getString(at: Constants.People.fullName)
         avatarBase64 = try? json.getString(at: Constants.People.avatarBase64)
-        lastCheckInDateTime = try? json.getString(at: Constants.People.lastCheckInDateTime)
-        lastCheckInLatitude = try? json.getString(at: Constants.People.lastCheckInLatitude)
-        lastCheckInLongitude = try? json.getString(at: Constants.People.lastCheckInLongitude)
+        lastCheckInDateTime = try? json.getString(at: Constants.People.LastCheckInDateTime)
+        lastCheckInLatitude = try? json.getDouble(at: Constants.People.LastCheckInLatitude)
+        lastCheckInLongitude = try? json.getDouble(at: Constants.People.LastCheckInLongitude)
         
     }
-    init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongtitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: Date) {
+    init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongtitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: String) {
         self.fullName = fullName
         self.email = email
         self.loginProvider = loginProvider
@@ -83,9 +84,10 @@ class User : NetworkModel {
         self.lastCheckInDateTime = lastCheckInDateTime
         requestType = .postUserInfo
     }
-    init(email: String, password: String, changePassword: String) {
+    init(email: String, password: String, grantType: String) {
         self.email = email
         self.password = password
+        self.grantType = grantType
         requestType = .login
     }
     
@@ -181,8 +183,8 @@ class User : NetworkModel {
         
         case .login:
             params[Constants.People.email] = changePassword as AnyObject?
-            params[Constants.People.password] = UserName as AnyObject?
-            params[Constants.People.grantType] = Grant_Type as AnyObject?
+            params[Constants.People.username] = username as AnyObject?
+            params[Constants.People.grantType] = grantType as AnyObject?
         
         case .changePassword:
             params[Constants.People.oldPassword] = oldPassword as AnyObject?

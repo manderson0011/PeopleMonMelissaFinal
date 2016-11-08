@@ -69,9 +69,9 @@ class RegisterViewController: UIViewController {
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
-        let user = User(email: email, password: password, changePassword: confirm)
+        let user = User(email: email, password: password, grantType: "password")
         
-        UserStore.shared.register(User) { (success, error) in
+        UserStore.shared.register(user) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             
             if success{
