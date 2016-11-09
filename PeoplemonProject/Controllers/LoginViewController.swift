@@ -15,7 +15,9 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
     @IBAction func LogInTab(_ sender: Any) {
+
         
         guard let email = userNameTextField.text, email != "" else {
             //show earror

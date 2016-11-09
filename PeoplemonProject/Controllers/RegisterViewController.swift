@@ -42,7 +42,7 @@ class RegisterViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        
+     print("I am here")
         
         guard let email = emailTextField.text , email != "" && Utils.isValidEmail(email)
             else{
@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController {
                 return
         }
         
-        
+        print("I am here")
         // Going to go ahead with the register
         
         MBProgressHUD.showAdded(to: view, animated: true)

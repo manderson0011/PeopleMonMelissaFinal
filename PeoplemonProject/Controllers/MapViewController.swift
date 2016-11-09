@@ -31,10 +31,10 @@ override func didReceiveMemoryWarning() {
 
 override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    //print("view appeared")
+    print("view appeared")
     if !WebServices.shared.userAuthTokenExists() || WebServices.shared.userAuthTokenExpired(){
         performSegue(withIdentifier: "PresentLoginNoAnimation", sender: self)
-        //print("I got here")
+    print("I got here")
     }
 }
 //Mark - @IBActions
