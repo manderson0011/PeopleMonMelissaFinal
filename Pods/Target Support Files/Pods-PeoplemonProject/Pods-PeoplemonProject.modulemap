@@ -1,0 +1,6 @@
+framework module Pods_PeoplemonProject {
+  umbrella header "Pods-PeoplemonProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
