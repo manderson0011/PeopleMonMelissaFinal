@@ -19,6 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
     var updateLocation = 0
     
+    var nearbyPeople = [People]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             print("I got here")
         }
     }
+    
+    
+    func loadNearbyPeople (){
+        //create a people object of type .nearby
+        let nearbyPerson = People(radius: 100)
+        
+        //call webservices.getobjects
+        WebServices.shared.getObjects(nearbyPerson) { (everyoneNearby, error) in
+            if let everyoneNearby = everyoneNearby {
+                //store result in array above
+                self.nearbyPeople = everyoneNearby
+               // show pins on map
+                self.pinsOnMap()
+                
+            }
+        }
+    }
+    
+    func pinsOnMap() {
+        for person in nearbyPeople
+        {
+            let annotation = MKAnnotation()
+            self.mapView.annotations.append(annotation)
+        }
+    }
+    
     
     //Mark - @IBActions
     @IBAction func logout(_ sender: Any) {

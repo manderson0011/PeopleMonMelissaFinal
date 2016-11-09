@@ -153,7 +153,7 @@ class People: NetworkModel {
     func path() -> String {
         switch requestType {
         case .nearby:
-            return "/v1/User/Nearby"
+            return "/v1/User/Nearby?radiusInMeters=\(radius!)"  // this is how you get!not post  ! is a double question 
         case .checkin:
             return "/v1/User/CheckIn"
         case .catchPerson:
@@ -179,15 +179,6 @@ class People: NetworkModel {
         
         var params: [String: AnyObject] = [:]
         switch requestType {
-            
-        case .nearby:
-            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-            params[Constants.People.userName] = userName as AnyObject?
-            params[Constants.People.longitude] = longitude as AnyObject?
-            params[Constants.People.latitude] = latitude as AnyObject?
-            params[Constants.People.created] = created as AnyObject?
-            
-            return params
             
         case .caught:
             
