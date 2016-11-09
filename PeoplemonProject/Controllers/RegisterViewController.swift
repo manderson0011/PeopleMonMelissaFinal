@@ -34,15 +34,16 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func SubmitRegistration(_ sender: Any) {
+
+    @IBAction func submitRegistration(_ sender: Any) {
         //validate user input
-        guard let username = userNameTextField.text, username != "" else {
+        guard let fullName = userNameTextField.text, fullName != "" else {
             //show earror
             let alert = Utils.createAlert("Login Error", message: "Please provide a user name", dismissButtonTitle: "Close")
             present(alert, animated: true, completion: nil)
             return
         }
-     print("I am here")
+        print("I am here")
         
         guard let email = emailTextField.text , email != "" && Utils.isValidEmail(email)
             else{
@@ -51,12 +52,14 @@ class RegisterViewController: UIViewController {
                 return
         }
         
+        
         guard let password = passwordTextField.text , password != ""
             else{
                 let alert = Utils.createAlert("Login Error", message: "Please provide a password", dismissButtonTitle: "Close")
                 present(alert, animated: true, completion: nil)
                 return
         }
+        
         guard let confirm = confirmPasswordTextField.text , password == confirm
             
             else {
@@ -64,12 +67,12 @@ class RegisterViewController: UIViewController {
                 return
         }
         
-        print("I am here")
+        
         // Going to go ahead with the register
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
-        let user = User(email: email, password: password, grantType: "password")
+        let user = User(Email: email, fullName: fullName, AvatarBase64: "placeholder", Password: password)
         
         UserStore.shared.register(user) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -81,9 +84,13 @@ class RegisterViewController: UIViewController {
                 self.present(Utils.createAlert(message: error), animated: true, completion: nil)
             }else {
                 self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
+                print("Made it to the end of register.")
+                
             }
         }
     }
+
+
     
     /*
      // MARK: - Navigation

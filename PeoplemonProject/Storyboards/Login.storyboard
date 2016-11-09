@@ -13,7 +13,6 @@
         <!--Log In View Controller-->
         <scene sceneID="xBp-gQ-bST">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Mq-JJ-5O2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="RbV-Z0-ggS" customClass="LogInViewController" customModule="PeoplemonProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QXd-wK-h20"/>
@@ -54,14 +53,12 @@
                                     <segue destination="Ucj-n6-SHo" kind="show" id="Ro0-iC-xdn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-Px-Jp6">
-                                <rect key="frame" x="118" y="371" width="138" height="99"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="Oep-RE-OQo"/>
-                                </constraints>
-                                <state key="normal" title="LogIn"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I77-sZ-Ytt">
+                                <rect key="frame" x="130" y="358" width="115" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="LogInTab:" destination="RbV-Z0-ggS" eventType="touchDragInside" id="tF6-RD-Vw6"/>
+                                    <action selector="LogInTab:" destination="RbV-Z0-ggS" eventType="touchUpInside" id="XuN-MB-EAo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,11 +71,8 @@
                             <constraint firstItem="MMk-dy-Aw7" firstAttribute="centerX" secondItem="7Rs-Dg-LTm" secondAttribute="centerX" id="PU3-TI-cR4"/>
                             <constraint firstItem="7Rs-Dg-LTm" firstAttribute="top" secondItem="MMk-dy-Aw7" secondAttribute="bottom" constant="26" id="QfR-RC-we1"/>
                             <constraint firstItem="7Rs-Dg-LTm" firstAttribute="trailing" secondItem="ks0-Uz-J7S" secondAttribute="trailing" id="hTm-zO-SG1"/>
-                            <constraint firstItem="Ob0-Px-Jp6" firstAttribute="top" secondItem="ks0-Uz-J7S" secondAttribute="bottom" constant="58" id="nQS-zh-Maf"/>
                             <constraint firstItem="MMk-dy-Aw7" firstAttribute="top" secondItem="QXd-wK-h20" secondAttribute="bottom" constant="55" id="tia-Lq-0k3"/>
                             <constraint firstItem="MMk-dy-Aw7" firstAttribute="centerX" secondItem="ya4-PQ-7hE" secondAttribute="centerX" id="vi5-C1-4gZ"/>
-                            <constraint firstItem="drK-fa-fBx" firstAttribute="top" secondItem="Ob0-Px-Jp6" secondAttribute="bottom" constant="197" id="xii-xW-EHG"/>
-                            <constraint firstItem="ks0-Uz-J7S" firstAttribute="centerX" secondItem="Ob0-Px-Jp6" secondAttribute="centerX" id="xyy-wr-idb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s62-LL-42k"/>
@@ -87,6 +81,7 @@
                         <outlet property="userNameTextField" destination="7Rs-Dg-LTm" id="VE1-7L-v2T"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Mq-JJ-5O2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="656.79999999999995" y="-100.29985007496252"/>
         </scene>
@@ -147,14 +142,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAG-CJ-KUm">
-                                <rect key="frame" x="154" y="430" width="67" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="67" id="6dC-Yb-zjy"/>
-                                </constraints>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXJ-oe-7U9">
+                                <rect key="frame" x="128" y="437" width="119" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register"/>
                                 <connections>
-                                    <action selector="SubmitRegistration:" destination="Ucj-n6-SHo" eventType="touchUpInside" id="fJX-tI-CpS"/>
+                                    <action selector="submitRegistration:" destination="Ucj-n6-SHo" eventType="touchUpInside" id="f5H-P4-4oa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,11 +160,8 @@
                             <constraint firstItem="j2V-mI-7mo" firstAttribute="top" secondItem="wCX-sk-4C5" secondAttribute="bottom" constant="44" id="KWB-N9-Csc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hlz-ab-bTq" secondAttribute="trailing" constant="55" id="Lqw-K7-b7H"/>
                             <constraint firstItem="qWl-jc-f5c" firstAttribute="top" secondItem="vcI-jH-tsK" secondAttribute="bottom" constant="27" id="O0D-uY-gZn"/>
-                            <constraint firstItem="IAG-CJ-KUm" firstAttribute="top" secondItem="qWl-jc-f5c" secondAttribute="bottom" constant="39" id="PKF-1L-tzZ"/>
                             <constraint firstItem="vcI-jH-tsK" firstAttribute="top" secondItem="UcB-Fu-8mS" secondAttribute="bottom" constant="23" id="Uhk-sc-Cqs"/>
                             <constraint firstItem="hlz-ab-bTq" firstAttribute="top" secondItem="j2V-mI-7mo" secondAttribute="bottom" constant="47" id="VXu-tn-seG"/>
-                            <constraint firstItem="IAG-CJ-KUm" firstAttribute="centerX" secondItem="DBg-Uk-cNr" secondAttribute="centerX" id="Wnp-AT-1eu"/>
-                            <constraint firstItem="Ek8-qL-CrT" firstAttribute="top" secondItem="IAG-CJ-KUm" secondAttribute="bottom" constant="153" id="XWR-ey-poe"/>
                             <constraint firstItem="UcB-Fu-8mS" firstAttribute="top" secondItem="hlz-ab-bTq" secondAttribute="bottom" constant="29" id="eFy-nj-A0V"/>
                             <constraint firstItem="vcI-jH-tsK" firstAttribute="trailing" secondItem="qWl-jc-f5c" secondAttribute="trailing" id="hwR-F1-gC2"/>
                             <constraint firstItem="j2V-mI-7mo" firstAttribute="leading" secondItem="hlz-ab-bTq" secondAttribute="leading" id="s8h-c0-SKb"/>
@@ -191,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJ8-Yj-ORd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="81"/>
+            <point key="canvasLocation" x="1381.5999999999999" y="80.50974512743629"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fhV-Fv-9e4">

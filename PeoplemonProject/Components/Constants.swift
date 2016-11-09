@@ -25,6 +25,7 @@ struct Constants {
     struct JSON {
         static let unknownError = "An Unknown Error Has Occurred"
         static let processingError = "There was an error processing the response"
+    
     }
     
     
@@ -32,9 +33,9 @@ struct Constants {
     struct People {
         
         static let id = "Id"
-        static let email = "email"
-        static let userId = "userId"
-        static let username = "username"
+        static let email = "Email"
+        static let userId = "UserId"
+        static let username = "userName"
         static let fullName = "FullName"
  
         static let created = "2016-11-03T20:44:12.608Z"
@@ -49,15 +50,15 @@ struct Constants {
         static let recipiantAvatar = "recipiantAvatar"
         static let senderAvatar = "senderAvatar"
         
-        static let avatarBase64 = "avatarBase64"
-        static let oldPassword = "oldPassword"
-        static let newPassword = "newPassword"
-        static let confirmPassword = "confirmPassword"
+        static let avatarBase64 = "AvatarBase64"
+        static let oldPassword = "OldPassword"
+        static let newPassword = "NewPassword"
+        static let confirmPassword = "ConfirmPassword"
         static let hasRegistered = "HasRegistered"
-        static let loginProvider = "loginProvider"
+        static let loginProvider = "LoginProvider"
         
-        static let AvatarBase64 = "avatarBase64"
-        static let senderAvatarBase64 = "senderAvatarBase64"
+        static let AvatarBase64 = "AvatarBase64"
+        static let senderAvatarBase64 = "enderAvatarBase64"
         static let recipientAvatarBase64 = "recipientAvatarBase64"
         static let recipientName = "recipientName"
         
@@ -65,16 +66,14 @@ struct Constants {
         static let LastCheckInLatitude = "0"
         static let LastCheckInDateTime = "0"
         
-        static let apiKey = "iOSandroid301november2016"
-        static let token = "token"
+        
+        static let apiKey = "ApiKey"
+        static let token = "access_token"
         static let grantType = "password"
-        static let expiration = "expiration"
+        static let expiration = ".expires"
 
         static let userID = "UserId"
-        static let userName = "UserName"
-   
-        
-        static let fullname = "fullname"
+        static let userName = "username"
         static let password = "password"
         
         static let caughtUserId = "CaughtUserId"
@@ -82,11 +81,13 @@ struct Constants {
         
         static let changePassword = "changepassword"
         static let setPassword = "setPassword"
-        static let longtitude = "0"
-        static let latitude = "0"
+        static let longitude = "Longitude"
+        static let latitude = "Latitude"
         
      
     }
+    
+    
 }
 
 // MARK: - Colors

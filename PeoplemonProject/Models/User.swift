@@ -13,10 +13,10 @@ import Freddy
 
 // Just a test object to excercise the network stack
 class User : NetworkModel {
-
-
+    
+    
     var id : String?
-    var username: String?
+    var userName: String?
     var email : String?
     var hasRegistered: Bool?
     var loginProvider: String?
@@ -38,7 +38,7 @@ class User : NetworkModel {
     var token : String?
     var expiration: String?
     var grantType: String?
-  
+    
     
     
     // Request Type
@@ -74,29 +74,30 @@ class User : NetworkModel {
         lastCheckInLongitude = try? json.getDouble(at: Constants.People.LastCheckInLongitude)
         
     }
-    init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongtitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: String) {
+    init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: String) {
         self.fullName = fullName
         self.email = email
         self.loginProvider = loginProvider
         self.avatarBase64 = avatarBase64
-        self.lastCheckInLongitude = lastCheckInLongtitude
+        self.lastCheckInLongitude = lastCheckInLongitude
         self.lastCheckInLatitude = lastCheckInLatitude
         self.lastCheckInDateTime = lastCheckInDateTime
         requestType = .postUserInfo
     }
     init(email: String, password: String, grantType: String) {
-        self.email = email
-        self.password = password
         self.grantType = grantType
+        self.userName = email
+        self.password = password
         requestType = .login
     }
     
-    init(email: String, fullName: String, avatarBase64: String, password: String, apiKey: String) {
+    
+    init(Email: String, fullName: String, AvatarBase64: String, Password: String) {
+        self.email = Email
         self.fullName = fullName
-        self.avatarBase64 = avatarBase64
-        self.password = password
-        self.email = email
-        self.apiKey = apiKey
+        self.avatarBase64 = AvatarBase64
+        self.apiKey = Constants.apiKey
+        self.password = Password
         requestType = .register
     }
     init(setPassword: String, oldPassword: String, confirmPassword: String, changePassword: String) {
@@ -117,8 +118,8 @@ class User : NetworkModel {
         self.avatarBase64 = avatarBase64
         requestType = .getUserInfo
     }
-
-//Determins the HTTP  method we will use in our calls Can use conditionals to determine this based on the endpoint we are calling or what we decide we would lke to do 
+    
+    //Determins the HTTP  method we will use in our calls Can use conditionals to determine this based on the endpoint we are calling or what we decide we would lke to do
     
     
     // Always return HTTP.GET
@@ -166,7 +167,7 @@ class User : NetworkModel {
     func toDictionary() -> [String: AnyObject]? {
         var params: [String: AnyObject] = [:]
         switch requestType {
-        
+            
         case .getUserInfo:
             params[Constants.People.id] = id as AnyObject?
             params[Constants.People.email] = email as AnyObject?
@@ -175,17 +176,17 @@ class User : NetworkModel {
             params[Constants.People.LastCheckInDateTime] = lastCheckInDateTime as AnyObject?
             params[Constants.People.LastCheckInLongitude] = lastCheckInLongitude as AnyObject?
             params[Constants.People.LastCheckInLatitude] = lastCheckInLatitude as AnyObject?
-        
+            
         case .postUserInfo:
-            params[Constants.People.fullname] = fullName as AnyObject?
+            params[Constants.People.fullName] = fullName as AnyObject?
             params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-    
-        
+            
+            
         case .login:
-            params[Constants.People.email] = changePassword as AnyObject?
-            params[Constants.People.username] = username as AnyObject?
-            params[Constants.People.grantType] = grantType as AnyObject?
-        
+            params["grant_type"] = grantType as AnyObject?
+            params[Constants.People.username] = userName as AnyObject?
+            params[Constants.People.password] = password as AnyObject?
+            
         case .changePassword:
             params[Constants.People.oldPassword] = oldPassword as AnyObject?
             params[Constants.People.newPassword] = newPassword as AnyObject?
@@ -193,22 +194,22 @@ class User : NetworkModel {
             
         case .setPassword:
             params[Constants.People.oldPassword] = oldPassword as AnyObject?
-          
+            
         case .register:
             params[Constants.People.email] = email as AnyObject?
             params[Constants.People.fullName] = fullName as AnyObject?
             params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
             params[Constants.People.apiKey] = apiKey as AnyObject?
             params[Constants.People.password] = password as AnyObject?
-      
-    
+            
+            
         default:
             break
         }
         
         return params
     }
-
-
-
+    
+    
+    
 }

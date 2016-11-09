@@ -308,7 +308,7 @@ OSStatus VALAtomicSecItemDelete(__nonnull CFDictionaryRef query)
 {
     __block BOOL canAccessKeychain = NO;
     VALExecuteBlockInLock(^{
-        NSString *const canaryKey = @"VAL_KeychainCanaryUsername";
+        NSString *const canaryKey = @"VAL_KeychainCanaryUserName";
         NSString *const canaryValue = @"VAL_KeychainCanaryPassword";
         
         NSString *const retrievedCanaryValue = [self stringForKey:canaryKey];

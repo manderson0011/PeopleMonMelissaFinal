@@ -33,14 +33,8 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.62753599476439792" green="0.058068382992901776" blue="0.10367995287749487" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-e6-fnw">
-                                <rect key="frame" x="16" y="238" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-3t-xqe">
-                                <rect key="frame" x="16" y="267" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-3t-xqe">
+                                <rect key="frame" x="16" y="267" width="217" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +54,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-G7-c7i">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-G7-c7i">
                                 <rect key="frame" x="8" y="296" width="359" height="309"/>
                             </imageView>
                         </subviews>
@@ -70,13 +64,9 @@
                             <constraint firstItem="FcZ-G7-c7i" firstAttribute="top" secondItem="g4X-3t-xqe" secondAttribute="bottom" constant="8" symbolic="YES" id="6UI-t6-HHy"/>
                             <constraint firstItem="aOA-Mh-G61" firstAttribute="leading" secondItem="m01-wY-hNH" secondAttribute="leading" id="6l9-lo-xRf"/>
                             <constraint firstItem="nwL-H1-fg9" firstAttribute="top" secondItem="m01-wY-hNH" secondAttribute="bottom" constant="8" symbolic="YES" id="7d1-w9-4ou"/>
-                            <constraint firstItem="NLw-e6-fnw" firstAttribute="top" secondItem="nwL-H1-fg9" secondAttribute="bottom" constant="46" id="E3O-lZ-S7c"/>
                             <constraint firstItem="m01-wY-hNH" firstAttribute="leading" secondItem="nwL-H1-fg9" secondAttribute="leading" id="EoB-fJ-CLW"/>
                             <constraint firstItem="FcZ-G7-c7i" firstAttribute="leading" secondItem="Q2d-wf-yvu" secondAttribute="leadingMargin" constant="-8" id="Fs0-xA-rUa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aOA-Mh-G61" secondAttribute="trailing" constant="-11" id="bWQ-I6-8yB"/>
-                            <constraint firstItem="NLw-e6-fnw" firstAttribute="leading" secondItem="g4X-3t-xqe" secondAttribute="leading" id="dxO-qT-xAd"/>
-                            <constraint firstItem="g4X-3t-xqe" firstAttribute="top" secondItem="NLw-e6-fnw" secondAttribute="bottom" constant="8" symbolic="YES" id="i3K-VE-iXq"/>
-                            <constraint firstItem="nwL-H1-fg9" firstAttribute="leading" secondItem="NLw-e6-fnw" secondAttribute="leading" id="imo-1R-Hex"/>
                             <constraint firstItem="rcv-7N-mr0" firstAttribute="top" secondItem="FcZ-G7-c7i" secondAttribute="bottom" constant="18" id="wT2-cg-pjU"/>
                             <constraint firstItem="FcZ-G7-c7i" firstAttribute="centerX" secondItem="Q2d-wf-yvu" secondAttribute="centerX" id="xbi-e2-SRB"/>
                             <constraint firstItem="m01-wY-hNH" firstAttribute="top" secondItem="aOA-Mh-G61" secondAttribute="bottom" constant="8" symbolic="YES" id="xi8-qg-cUM"/>
@@ -96,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxY-4j-7d6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="9"/>
+            <point key="canvasLocation" x="1701.5999999999999" y="8.5457271364317844"/>
         </scene>
         <!--PEOPLEMON-->
         <scene sceneID="tne-QT-ifu">
@@ -119,13 +109,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-wp-ms1">
-                                <rect key="frame" x="267" y="137" width="97" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="JAV-J4-3WY"/>
-                                </constraints>
-                                <state key="normal" title="CheckIn"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXL-MC-8i5">
                                 <rect key="frame" x="267" y="99" width="97" height="30"/>
                                 <state key="normal" title="User Profile"/>
@@ -138,6 +121,16 @@
                                 <state key="normal" title="User Profile"/>
                                 <connections>
                                     <segue destination="Fbw-ML-Svj" kind="showDetail" id="SMG-s0-ej5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-wp-ms1">
+                                <rect key="frame" x="267" y="137" width="97" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="JAV-J4-3WY"/>
+                                </constraints>
+                                <state key="normal" title="CheckIn"/>
+                                <connections>
+                                    <action selector="userCheckIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQZ-7f-4T7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -169,6 +162,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="wRn-hY-71n"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="e13-1l-3OY" id="P9q-ta-AIh"/>
                         <segue destination="fbQ-bJ-rMr" kind="presentation" identifier="PresentLogin" id="SV6-3c-44V"/>
                         <segue destination="fbQ-bJ-rMr" kind="presentation" identifier="PresentLoginNoAnimation" animates="NO" id="W86-EN-kbe"/>
                     </connections>

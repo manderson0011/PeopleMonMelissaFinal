@@ -94,9 +94,9 @@ class WebServices: NSObject {
             
             let dateString = self.authTokenExpireDate!
             if let expireDate = dateFormatter.date(from: dateString) {
-                let hourFromNow = Date().addingTimeInterval(3600)
+                //let hourFromNow = Date().addingTimeInterval(3600)
                 
-                if expireDate.compare(hourFromNow) == ComparisonResult.orderedAscending {
+                if expireDate.compare(Date()) == ComparisonResult.orderedAscending {
                     return true
                 } else {
                     return false

@@ -24,7 +24,7 @@ class People: NetworkModel {
     var email: String?
     var avatarBase64 : String?
     var latitude: Double?
-    var longtitude: Double?
+    var longitude: Double?
     var created: String?
     var conversationId: String?
     var recipientId: String?
@@ -66,7 +66,7 @@ class People: NetworkModel {
         userName = try? json.getString(at: Constants.People.userName)
         avatarBase64 = try? json.getString(at: Constants.People.avatarBase64)
         latitude = try? json.getDouble(at: Constants.People.latitude)
-        longtitude = try? json.getDouble(at: Constants.People.longtitude)
+        longitude = try? json.getDouble(at: Constants.People.longitude)
         created = try? json.getString(at: Constants.People.created)
         radiusInMeters = try? json.getDouble(at: Constants.People.radiusInMeters)
         caughtUserId = try? json.getInt(at: Constants.People.caughtUserId)
@@ -87,17 +87,13 @@ class People: NetworkModel {
     
     
     
-    init(avatarBase64: String, userName: String, userId: String, longtitude: Double, latitude: Double, created: String ) {
-        self.avatarBase64 = avatarBase64
-        self.userId = userId
-        self.latitude = latitude
-        self.longtitude = longtitude
-        self.created = created
+    init(radius: Double ) {
+        self.radius = radius
         requestType = .nearby
     }
     
     init(latitude: Double, longitude: Double) {
-        self.longtitude = 0
+        self.longitude = 0
         self.latitude = 0
         requestType = .checkin
     }
@@ -177,63 +173,64 @@ class People: NetworkModel {
             
         }
     }
+    
+    // Demo object isn't being posted to a server, so just return nil
+    func toDictionary() -> [String: AnyObject]? {
         
-        // Demo object isn't being posted to a server, so just return nil
-        func toDictionary() -> [String: AnyObject]? {
+        var params: [String: AnyObject] = [:]
+        switch requestType {
             
+        case .nearby:
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.userName] = userName as AnyObject?
+            params[Constants.People.longitude] = longitude as AnyObject?
+            params[Constants.People.latitude] = latitude as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+            
+            return params
+            
+        case .caught:
+            
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.userName] = userName as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+            
+            return params
+            
+        case .catchPerson:
+            params[Constants.People.caughtUserId] = caughtUserId as AnyObject?
+            params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
+            
+            return params
+            
+        case .checkin:
             var params: [String: AnyObject] = [:]
-            switch requestType {
-                
-            case .nearby:
-                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-                params[Constants.People.username] = userName as AnyObject?
-                params[Constants.People.longtitude] = longtitude as AnyObject?
-                params[Constants.People.latitude] = latitude as AnyObject?
-                params[Constants.People.created] = created as AnyObject?
-               
-                return params
-                
-            case .caught:
-                
-                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-                params[Constants.People.username] = userName as AnyObject?
-                params[Constants.People.created] = created as AnyObject?
-              
-                return params
-                
-            case .catchPerson:
-                params[Constants.People.caughtUserId] = caughtUserId as AnyObject?
-                params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
-                
-                return params
+            params[Constants.People.longitude] = longitude as AnyObject?
+            params[Constants.People.latitude] = latitude as AnyObject?
             
-            case .checkin:
-                params[Constants.People.longtitude] = longtitude as AnyObject?
-                params[Constants.People.latitude] = latitude as AnyObject?
-                
-                return params
-                
-            case .conversations:
-                params[Constants.People.conversationId] = avatarBase64 as AnyObject?
-                params[Constants.People.recipientId] = userName as AnyObject?
-                params[Constants.People.reipientName] = recipientName as AnyObject?
-                params[Constants.People.lastMessage] = lastMessage as AnyObject?
-                params[Constants.People.created] = created as AnyObject?
-                params[Constants.People.messageCount] = messageCount as AnyObject?
-                params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
-                params[Constants.People.senderId] = senderId as AnyObject?
-                params[Constants.People.senderName] = senderName as AnyObject?
-                params[Constants.People.recipiantAvatar] = recipientName as AnyObject?
-                params[Constants.People.senderAvatarBase64] = senderAvatarBase64 as AnyObject?
-                
-                return params
-                
-            default:
-                return nil
-            }
+            return params
             
+        case .conversations:
+            params[Constants.People.conversationId] = avatarBase64 as AnyObject?
+            params[Constants.People.recipientId] = userName as AnyObject?
+            params[Constants.People.reipientName] = recipientName as AnyObject?
+            params[Constants.People.lastMessage] = lastMessage as AnyObject?
+            params[Constants.People.created] = created as AnyObject?
+            params[Constants.People.messageCount] = messageCount as AnyObject?
+            params[Constants.People.avatarBase64] = avatarBase64 as AnyObject?
+            params[Constants.People.senderId] = senderId as AnyObject?
+            params[Constants.People.senderName] = senderName as AnyObject?
+            params[Constants.People.recipiantAvatar] = recipientName as AnyObject?
+            params[Constants.People.senderAvatarBase64] = senderAvatarBase64 as AnyObject?
+            
+            return params
+            
+        default:
+            return nil
         }
+        
     }
+}
 
 /*
  func dateString() -> String {

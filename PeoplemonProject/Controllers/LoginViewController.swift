@@ -17,8 +17,7 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func LogInTab(_ sender: Any) {
-
-        
+    
         guard let email = userNameTextField.text, email != "" else {
             //show earror
             let alert = Utils.createAlert("Login Error", message: "Please provide a user name", dismissButtonTitle: "Close")
