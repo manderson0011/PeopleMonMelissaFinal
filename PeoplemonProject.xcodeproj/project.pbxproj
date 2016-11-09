@@ -24,6 +24,7 @@
 		2AC65C111DD154F00070CCEA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C101DD154F00070CCEA /* RegisterViewController.swift */; };
 		2AC65C141DD156860070CCEA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65C131DD156860070CCEA /* Login.storyboard */; };
 		2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C161DD26ED80070CCEA /* MapViewController.swift */; };
+		2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */; };
 		410B9FC9B6E7D94A0E792A7F /* Pods_PeoplemonProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		2AC65C131DD156860070CCEA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		2AC65C151DD156A10070CCEA /* ProjectPeoplemon.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ProjectPeoplemon.entitlements; sourceTree = "<group>"; };
 		2AC65C161DD26ED80070CCEA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Controllers/MapViewController.swift; sourceTree = "<group>"; };
+		2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = Controllers/UserProfileViewController.swift; sourceTree = "<group>"; };
 		D8AA33DC2AFE4DD25B82A716 /* Pods-PeoplemonProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D4DF0F311B5FB3D035257D /* Pods-PeoplemonProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				2AC65C0E1DD154DB0070CCEA /* LoginViewController.swift */,
 				2AC65C101DD154F00070CCEA /* RegisterViewController.swift */,
 				2AC65C161DD26ED80070CCEA /* MapViewController.swift */,
+				2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */,
 				2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */,
 				2AC65C0C1DD154890070CCEA /* UserStore.swift in Sources */,
+				2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */,
 				2AC65BFB1DD153AE0070CCEA /* User.swift in Sources */,
 				2AC65C051DD154400070CCEA /* WebservicesExtension.swift in Sources */,
 				2AC65C081DD154640070CCEA /* Constants.swift in Sources */,

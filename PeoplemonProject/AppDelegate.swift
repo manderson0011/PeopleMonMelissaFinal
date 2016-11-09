@@ -13,9 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+ //   var locationManager: CLLocationManager?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-          WebServices.shared.baseURL = "https://efa-peoplemon-api.azurewebsites.net:443" 
+          WebServices.shared.baseURL = "https://efa-peoplemon-api.azurewebsites.net:443"
+ //       locationManager = CLLocationManager()
+        //locationManager?.requestWhenInUseAuthorization()
         return true
     }
 
