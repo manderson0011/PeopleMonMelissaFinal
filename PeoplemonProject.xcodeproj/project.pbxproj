@@ -27,6 +27,7 @@
 		2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */; };
 		2AC65C1C1DD3B2B80070CCEA /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */; };
 		2AC65C1E1DD4F7090070CCEA /* paintsville.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65C1D1DD4F7090070CCEA /* paintsville.gpx */; };
+		2AC65C221DD513220070CCEA /* PeopleCaughtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C211DD513220070CCEA /* PeopleCaughtViewController.swift */; };
 		410B9FC9B6E7D94A0E792A7F /* Pods_PeoplemonProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		2AC65C1A1DD38D6D0070CCEA /* PeoplemonProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PeoplemonProject.entitlements; sourceTree = "<group>"; };
 		2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPin.swift; path = Components/MapPin.swift; sourceTree = "<group>"; };
 		2AC65C1D1DD4F7090070CCEA /* paintsville.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = paintsville.gpx; sourceTree = "<group>"; };
+		2AC65C211DD513220070CCEA /* PeopleCaughtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeopleCaughtViewController.swift; path = Controllers/PeopleCaughtViewController.swift; sourceTree = "<group>"; };
 		D8AA33DC2AFE4DD25B82A716 /* Pods-PeoplemonProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D4DF0F311B5FB3D035257D /* Pods-PeoplemonProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 				2AC65C101DD154F00070CCEA /* RegisterViewController.swift */,
 				2AC65C161DD26ED80070CCEA /* MapViewController.swift */,
 				2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */,
+				2AC65C211DD513220070CCEA /* PeopleCaughtViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				2AC65C111DD154F00070CCEA /* RegisterViewController.swift in Sources */,
 				2AC65BFD1DD153CC0070CCEA /* People.swift in Sources */,
 				2AC65BEA1DD152CE0070CCEA /* ViewController.swift in Sources */,
+				2AC65C221DD513220070CCEA /* PeopleCaughtViewController.swift in Sources */,
 				2AC65C1C1DD3B2B80070CCEA /* MapPin.swift in Sources */,
 				2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */,
 				2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */,

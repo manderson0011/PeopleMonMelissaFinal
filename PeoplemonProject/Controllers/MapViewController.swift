@@ -21,8 +21,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     
     var updateLocation = true
-    var latitudeDelta = 0.005
-    var longitudeDelta = 0.005
+    var latitudeDelta = 0.0025
+    var longitudeDelta = 0.0025
     
     var annotations: [MapPin] = []
     var overlay: MKOverlay?
@@ -31,9 +31,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapView.delegate = self
+        mapView.delegate = self
         
         print("view loaded")
+        
         // Do any additional setup after loading the view.
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = kCLDistanceFilterNone
@@ -51,7 +52,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations: [CLLocation]){
         
-        let myArea = MKCoordinateRegionMakeWithDistance(self.locationManager.location!.coordinate, 1000, 1000)
+        let myArea = MKCoordinateRegionMakeWithDistance(self.locationManager.location!.coordinate, 500, 500)
         self.mapView.setRegion(myArea, animated: true)
         
     }
@@ -81,15 +82,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let checkIn = People(coordinate: coordinate)
             WebServices.shared.postObject(checkIn, completion: { (object, error) in
                 if let error = error {
-                    self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                   // self.present(Utils.createAlert(message: error), animated: true, completion: nil)
                 }else{
-                    self.present(Utils.createAlert("Wonderful!", message: "You are checked in."),  animated: true, completion: nil)
+                   // self.present(Utils.createAlert("Wonderful!", message: "You are checked in."),  animated: true, completion: nil)
                     
                 }
             })
             
             
         }
+        
         let peopleNearby = People(radius: 100)
         WebServices.shared.getObjects(peopleNearby){
             (nearbyPeople, error) in
@@ -132,13 +134,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let coordinate = location.coordinate
             
             //create user object with that location
-          //  let people = People(coordinate: coordinate!)
+            //  let people = People(coordinate: coordinate!)
             
             //call webservices .post with the user object
-        //    WebServices.shared.postObject(people, completion: { (person, error) in
-               
-                
-         //   })
+            //    WebServices.shared.postObject(people, completion: { (person, error) in
+            
+            
+            //   })
             
             
         }
@@ -156,9 +158,10 @@ extension MapViewController: MKMapViewDelegate {
         
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if pinView == nil {
+           
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
+            pinView!.canShowCallout = false
+            pinView!.animatesDrop = false
             
         } else{
             pinView!.annotation = annotation
@@ -169,7 +172,7 @@ extension MapViewController: MKMapViewDelegate {
         if let mapPin = view.annotation as? MapPin, let people = mapPin.people, let name = people.userName, let userId = people.userId {
             let alert = UIAlertController(title: "Catch User", message: "Catch\(name)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Catch", style: .default, handler: { (action) in
-                let catchPeople = People(caughtUserId: userId, radiusInMeters: Constants.radius)
+                let catchPeople = People(caughtUserId: userId, radiusInMeters: Int(Constants.radius))
                 WebServices.shared.postObject(catchPeople, completion: { (object, error) in
                     if let error = error{
                         self.present(Utils.createAlert(message: error), animated: true, completion: nil)
@@ -191,3 +194,7 @@ extension MapViewController: MKMapViewDelegate {
         return renderer
     }
 }
+
+
+
+//table row //endpoint for caught , 

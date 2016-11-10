@@ -73,7 +73,7 @@ struct Constants {
         static let expiration = ".expires"
 
         static let userID = "UserId"
-        static let userName = "username"
+        static let userName = "UserName"
         static let password = "password"
         
         static let caughtUserId = "CaughtUserId"

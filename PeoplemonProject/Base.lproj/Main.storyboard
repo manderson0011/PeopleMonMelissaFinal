@@ -84,7 +84,11 @@
                         <barButtonItem id="KoW-m3-LRR"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="exc-MK-gzE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R17-ct-Izq"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R17-ct-Izq">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="ruf-7a-K1S"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="save" id="QU4-td-ahT"/>
                             <barButtonItem systemItem="camera" id="R2w-Ws-wz2"/>
@@ -232,12 +236,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="People I Have Caught" id="qM3-8p-3sa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="gIn-ff-CTZ"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="gIn-ff-CTZ">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="RP4-eF-FhN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joT-Fi-DzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904.8000000000002" y="638.2308845577212"/>
+            <point key="canvasLocation" x="2649" y="637"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vfY-U5-t0d">
@@ -281,5 +289,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="W86-EN-kbe"/>
+        <segue reference="ruf-7a-K1S"/>
     </inferredMetricsTieBreakers>
 </document>

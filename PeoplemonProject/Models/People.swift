@@ -36,11 +36,11 @@ class People: NetworkModel {
     var senderName: String?
     var recipientAvatar: String?
     var senderAvatar: String?
-    var radius: Double?
+    var radiusInMeters: Int?
     var grant_type: String?
     var expiration: Int?
     var caughtUserId: String?
-    var radiusInMeters: Double?
+    
     var recipientAvatarBase64: String?
     var senderAvatarBase64: String?
     
@@ -69,7 +69,7 @@ class People: NetworkModel {
         latitude = try? json.getDouble(at: Constants.People.latitude)
         longitude = try? json.getDouble(at: Constants.People.longitude)
         created = try? json.getString(at: Constants.People.created)
-        radiusInMeters = try? json.getDouble(at: Constants.People.radiusInMeters)
+        radiusInMeters = try? json.getInt(at: Constants.People.radiusInMeters)
         caughtUserId = try? json.getString(at: Constants.People.caughtUserId)
         conversationId = try? json.getString(at: Constants.People.conversationId)
         recipientId = try? json.getString(at: Constants.People.recipientId)
@@ -88,8 +88,8 @@ class People: NetworkModel {
     
     
     
-    init(radius: Double ) {
-        self.radius = radius
+    init(radius: Int) {
+        self.radiusInMeters = radius
         requestType = .nearby
     }
     
@@ -98,7 +98,7 @@ class People: NetworkModel {
         self.latitude = coordinate.latitude
         requestType = .checkin
     }
-    init(caughtUserId: String, radiusInMeters: Double) {
+    init(caughtUserId: String, radiusInMeters: Int) {
         self.caughtUserId = caughtUserId
         self.radiusInMeters = radiusInMeters
         requestType = .catchPerson
@@ -154,7 +154,7 @@ class People: NetworkModel {
     func path() -> String {
         switch requestType {
         case .nearby:
-            return "/v1/User/Nearby?radiusInMeters=\(radius!)"  // this is how you get!not post  ! is a double question 
+            return "/v1/User/Nearby"
         case .checkin:
             return "/v1/User/CheckIn"
         case .catchPerson:
@@ -180,6 +180,10 @@ class People: NetworkModel {
         
         var params: [String: AnyObject] = [:]
         switch requestType {
+            
+        case .nearby:
+            params[Constants.People.radiusInMeters] = radiusInMeters as AnyObject?
+            return params
             
         case .caught:
             
