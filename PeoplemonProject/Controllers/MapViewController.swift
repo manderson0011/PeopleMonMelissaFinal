@@ -18,35 +18,42 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
-    var updateLocation = 0
     
-    var nearbyPeople = [People]()
     
-   
+    var updateLocation = true
+    var latitudeDelta = 0.005
+    var longitudeDelta = 0.005
+    
+    var annotations: [MapPin] = []
+    var overlay: MKOverlay?
+    
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView.delegate = self
+        
         print("view loaded")
-        
+        // Do any additional setup after loading the view.
         self.locationManager.delegate = self
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        if CLLocationManager.authorizationStatus()
-            == .authorizedWhenInUse {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             self.mapView.showsUserLocation = true
             self.locationManager.startUpdatingLocation()
             
+            
         }else{
-            self .locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
         }
-        
-
-        
+        loadMap()
     }
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        let mySpace = MKCoordinateRegionMakeWithDistance(self.locationManager.location!.coordinate, 1000, 1000)
-        self.mapView.setRegion(mySpace, animated: true)
         
-        // Do any additional setup after loading the view.
+        let myArea = MKCoordinateRegionMakeWithDistance(self.locationManager.location!.coordinate, 1000, 1000)
+        self.mapView.setRegion(myArea, animated: true)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,36 +63,57 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view appeared")
+        //print("view appeared")
         if !WebServices.shared.userAuthTokenExists() || WebServices.shared.userAuthTokenExpired(){
             performSegue(withIdentifier: "PresentLoginNoAnimation", sender: self)
-            print("I got here")
+            //print("I got here")
+        }else{
+            beginTimer()
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        stopTimer()
+    }
     
-    func loadNearbyPeople (){
-        //create a people object of type .nearby
-        let nearbyPerson = People(radius: 100)
-        
-        //call webservices.getobjects
-        WebServices.shared.getObjects(nearbyPerson) { (everyoneNearby, error) in
-            if let everyoneNearby = everyoneNearby {
-                //store result in array above
-                self.nearbyPeople = everyoneNearby
-               // show pins on map
-                self.pinsOnMap()
-                
+    func loadMap(){
+        if let coordinate = locationManager.location?.coordinate {
+            let checkIn = People(coordinate: coordinate)
+            WebServices.shared.postObject(checkIn, completion: { (object, error) in
+                if let error = error {
+                    self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                }else{
+                    self.present(Utils.createAlert("Wonderful!", message: "You are checked in."),  animated: true, completion: nil)
+                    
+                }
+            })
+            
+            
+        }
+        let peopleNearby = People(radius: 100)
+        WebServices.shared.getObjects(peopleNearby){
+            (nearbyPeople, error) in
+            if let nearbyPeople = nearbyPeople{
+                let otherAnnotations = self.annotations
+                self.annotations = []
+                for people in nearbyPeople {
+                    let pin = MapPin(people: people)
+                    //self.peopleNearby.append(pin)
+                    self.annotations.append(pin)
+                }
+                self.mapView.addAnnotations(self.annotations)
+                self.mapView.removeAnnotations(otherAnnotations)
             }
         }
     }
     
-    func pinsOnMap() {
-        for person in nearbyPeople
-        {
-            let annotation = MKAnnotation()
-            self.mapView.annotations.append(annotation)
-        }
+    
+    func beginTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(loadMap), userInfo: nil, repeats: true)
+    }
+    func stopTimer(){
+        timer?.invalidate()
+        timer = nil
     }
     
     
@@ -97,28 +125,69 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         
     }
     
-    @IBAction func userCheckIn(_ sender: Any) {
+    @IBAction func CheckIn(_ sender: AnyObject) {
+        //get the location
         if let location = locationManager.location {
-            let people = People(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             
-            WebServices.shared.postObject(people, completion: { (person, error) in
-                if let error = error {
-                    self.present(Utils.createAlert(message: error), animated: true, completion: nil)
-                }else {
-                    self.present(Utils.createAlert("You are on the board", message: "You are checked in"), animated: true, completion: nil)
-                }
-            })
+            let coordinate = location.coordinate
+            
+            //create user object with that location
+          //  let people = People(coordinate: coordinate!)
+            
+            //call webservices .post with the user object
+        //    WebServices.shared.postObject(people, completion: { (person, error) in
+               
+                
+         //   })
+            
+            
         }
+        loadMap()
+        
+        
     }
 }
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */
-
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+            
+        } else{
+            pinView!.annotation = annotation
+        }
+        return pinView
+    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let mapPin = view.annotation as? MapPin, let people = mapPin.people, let name = people.userName, let userId = people.userId {
+            let alert = UIAlertController(title: "Catch User", message: "Catch\(name)?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Catch", style: .default, handler: { (action) in
+                let catchPeople = People(caughtUserId: userId, radiusInMeters: Constants.radius)
+                WebServices.shared.postObject(catchPeople, completion: { (object, error) in
+                    if let error = error{
+                        self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                    } else{
+                        self.present(Utils.createAlert("Yay!", message: "User Caught"), animated: true, completion: nil)
+                    }
+                })
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        self.overlay = overlay
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.green
+        renderer.lineWidth = 5.0
+        renderer.lineCap = CGLineCap.round
+        return renderer
+    }
+}

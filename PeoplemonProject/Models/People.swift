@@ -11,6 +11,7 @@ import Foundation
 import Alamofire
 import Freddy
 import AFDateHelper
+import MapKit
 
 // Just a test object to excercise the network stack
 class People: NetworkModel {
@@ -38,7 +39,7 @@ class People: NetworkModel {
     var radius: Double?
     var grant_type: String?
     var expiration: Int?
-    var caughtUserId: Int?
+    var caughtUserId: String?
     var radiusInMeters: Double?
     var recipientAvatarBase64: String?
     var senderAvatarBase64: String?
@@ -69,7 +70,7 @@ class People: NetworkModel {
         longitude = try? json.getDouble(at: Constants.People.longitude)
         created = try? json.getString(at: Constants.People.created)
         radiusInMeters = try? json.getDouble(at: Constants.People.radiusInMeters)
-        caughtUserId = try? json.getInt(at: Constants.People.caughtUserId)
+        caughtUserId = try? json.getString(at: Constants.People.caughtUserId)
         conversationId = try? json.getString(at: Constants.People.conversationId)
         recipientId = try? json.getString(at: Constants.People.recipientId)
         recipientName = try? json.getString(at: Constants.People.recipientName)
@@ -92,12 +93,12 @@ class People: NetworkModel {
         requestType = .nearby
     }
     
-    init(latitude: Double, longitude: Double) {
-        self.longitude = 0
-        self.latitude = 0
+    init(coordinate: CLLocationCoordinate2D) {
+        self.longitude = coordinate.longitude
+        self.latitude = coordinate.latitude
         requestType = .checkin
     }
-    init(caughtUserId: Int, radiusInMeters: Double) {
+    init(caughtUserId: String, radiusInMeters: Double) {
         self.caughtUserId = caughtUserId
         self.radiusInMeters = radiusInMeters
         requestType = .catchPerson
