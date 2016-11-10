@@ -11,6 +11,7 @@ import MapKit
 import MBProgressHUD
 import CoreLocation
 
+
 class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     
@@ -20,6 +21,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     var updateLocation = 0
     
     var nearbyPeople = [People]()
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }else{
             self .locationManager.requestWhenInUseAuthorization()
         }
+        
+
         
     }
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations: [CLLocation]){
