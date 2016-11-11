@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 import MBProgressHUD
 import CoreLocation
+import Alamofire
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate{
@@ -49,6 +50,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             self.locationManager.requestWhenInUseAuthorization()
         }
         loadMap()
+        mapView.mapType = MKMapType.hybrid
     }
     
     

@@ -17,7 +17,7 @@ class CaughtTableViewController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            let person = People()
+            let person = People(userId: "", avatarBase64: "", created: "",userName: "")
             WebServices.shared.getObjects(person) { (objects, error) in
                 if let objects = objects{
                     self.caught = objects
@@ -32,7 +32,7 @@ class CaughtTableViewController: UITableViewController {
         }
         
         // MARK: - Table view data source
-        
+    
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
             return 1
@@ -43,18 +43,29 @@ class CaughtTableViewController: UITableViewController {
             return caught.count
         }
         
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CaughtTableViewCell.self)) as! CaughtTableViewCell
-            let person = caught[indexPath.row]
-            cell.setUpCell(person: person)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CaughtTableViewCell", for: indexPath) as? CaughtTableViewCell {
+            
+            let people = caught[indexPath.row]
+            
+            cell.setUpCell(people: people)
+            
             return cell
+        } else {
+            
+            print("ERROR WITH CELL")
+            
+            return UITableViewCell()
         }
-        
-        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    }     
+ 
+              override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 75
+            
+             print("I am here")
         }
-        
+    
     }
     
     

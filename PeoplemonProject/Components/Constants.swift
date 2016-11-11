@@ -58,7 +58,7 @@ struct Constants {
         static let loginProvider = "LoginProvider"
         
         static let AvatarBase64 = "AvatarBase64"
-        static let senderAvatarBase64 = "enderAvatarBase64"
+        static let senderAvatarBase64 = "senderAvatarBase64"
         static let recipientAvatarBase64 = "recipientAvatarBase64"
         static let recipientName = "recipientName"
         

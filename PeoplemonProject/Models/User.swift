@@ -57,7 +57,9 @@ class User : NetworkModel {
     
     
     // empty constructor
-    required init() {}
+    required init() {
+            requestType = .getUserInfo
+    }
     
     // create an object from JSON
     required init(json: JSON) throws {
@@ -72,7 +74,14 @@ class User : NetworkModel {
         lastCheckInDateTime = try? json.getString(at: Constants.People.LastCheckInDateTime)
         lastCheckInLatitude = try? json.getDouble(at: Constants.People.LastCheckInLatitude)
         lastCheckInLongitude = try? json.getDouble(at: Constants.People.LastCheckInLongitude)
-        
+        oldPassword = try? json.getString(at: Constants.People.oldPassword)
+        newPassword = try? json.getString(at: Constants.People.newPassword)
+        confirmPassword = try? json.getString(at: Constants.People.confirmPassword)
+        apiKey = try? json.getString(at: Constants.People.apiKey)
+        password = try? json.getString(at: Constants.People.password)
+        token = try? json.getString(at: Constants.People.token)
+        expiration = try? json.getString(at: Constants.People.expiration)
+        grantType = try? json.getString(at: Constants.People.grantType)
     }
     init(fullName: String, email: String, hasRegistered: String, loginProvider: String, avatarBase64: String, lastCheckInLongitude: Double, lastCheckInLatitude: Double, lastCheckInDateTime: String) {
         self.fullName = fullName
@@ -155,7 +164,7 @@ class User : NetworkModel {
         case .changePassword:
             return "/api/Account/ChangePassword"
         case .getUserInfo:
-            return "/api/Account/UserId"
+            return "/api/Account/UserInfo"
         case .postUserInfo:
             return "/api/Account/UserId"
         }

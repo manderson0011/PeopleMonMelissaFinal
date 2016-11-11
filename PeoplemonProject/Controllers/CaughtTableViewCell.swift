@@ -11,13 +11,14 @@ import UIKit
 class CaughtTableViewCell: UITableViewCell {
 
     weak var caught: People!
-    
+
     @IBOutlet weak var caughtLabel: UILabel!
+
     
     var people: People!
     
-    func setUpCell(person: People){
-        self.people = people!
+    func setUpCell(people: People){
+        self.people = people
         caughtLabel.text = people.userName
     
     }

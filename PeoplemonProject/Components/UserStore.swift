@@ -7,13 +7,15 @@
 //
 
 import Foundation
-
+import UIKit
 
 
 
 class UserStore {
-    //singleton
     static let shared = UserStore()
+    
+    var selectedImage: UIImage?
+    var user:User?
     private init() {}
     
     //give me a user then i will log them in and tell you when they are logged in

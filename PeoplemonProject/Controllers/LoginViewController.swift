@@ -42,9 +42,9 @@ class LogInViewController: UIViewController {
             if success{
                 self.dismiss(animated: true, completion: nil)
                 
-            }else if let error = error{
+            } else if let error = error{
                 self.present(Utils.createAlert(message: error), animated: true, completion: nil)
-            }else {
+            } else {
                 self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
             }
         }

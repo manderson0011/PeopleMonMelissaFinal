@@ -129,7 +129,6 @@
 		2AC65BFF1DD153EF0070CCEA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				2AC65C091DD154740070CCEA /* Utils.swift */,
 				2AC65C001DD1540C0070CCEA /* Webservices.swift */,
 				2AC65C021DD1542C0070CCEA /* NetworkModel.swift */,
 				2AC65C041DD154400070CCEA /* WebservicesExtension.swift */,
@@ -140,6 +139,7 @@
 		2AC65C061DD154480070CCEA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2AC65C091DD154740070CCEA /* Utils.swift */,
 				2AC65C071DD154640070CCEA /* Constants.swift */,
 				2AC65C0B1DD154890070CCEA /* UserStore.swift */,
 				2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */,
