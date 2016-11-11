@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A08CB571DD664AD0009B070 /* UserProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A08CB561DD664AD0009B070 /* UserProf.swift */; };
 		2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BE71DD152CE0070CCEA /* AppDelegate.swift */; };
 		2AC65BEA1DD152CE0070CCEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BE91DD152CE0070CCEA /* ViewController.swift */; };
 		2AC65BED1DD152CE0070CCEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65BEB1DD152CE0070CCEA /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplemonProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A08CB561DD664AD0009B070 /* UserProf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProf.swift; path = Components/UserProf.swift; sourceTree = "<group>"; };
 		2AC65BE41DD152CE0070CCEA /* PeoplemonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplemonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC65BE71DD152CE0070CCEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AC65BE91DD152CE0070CCEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				2AC65C071DD154640070CCEA /* Constants.swift */,
 				2AC65C0B1DD154890070CCEA /* UserStore.swift */,
 				2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */,
+				2A08CB561DD664AD0009B070 /* UserProf.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				2AC65C1C1DD3B2B80070CCEA /* MapPin.swift in Sources */,
 				2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */,
 				2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */,
+				2A08CB571DD664AD0009B070 /* UserProf.swift in Sources */,
 				2AC65C2A1DD55F5E0070CCEA /* ImageViewViewController.swift in Sources */,
 				2AC65C0C1DD154890070CCEA /* UserStore.swift in Sources */,
 				2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */,

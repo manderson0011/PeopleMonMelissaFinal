@@ -1,21 +1,13 @@
+
 //
-//  UserProfileViewController.swift
-//  PeoplemonProject
+//  LoginViewController.swift
+//  ProjectPeoplemon
 //
-//  Created by Melissa Anderson on 11/8/16.
+//  Created by Melissa Anderson on 11/5/16.
 //  Copyright © 2016 Melissa Anderson. All rights reserved.
 //
 
 
-import UIKit
-
-//
-//  UserProfileViewController.swift
-//  PeoplemonGo
-//
-//  Created by Deb Ramey on 11/8/16.
-//  Copyright © 2016 Deb Ramey. All rights reserved.
-//
 
 import UIKit
 
@@ -92,7 +84,7 @@ class UserProfileViewController: UIViewController {
     }
     
     @IBAction func saveUserInfo(_ sender: Any) {
-    
+        
         
         guard let fullName = fullNameText.text, fullName != "" else {
             //show error
@@ -122,13 +114,7 @@ class UserProfileViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 
             }
-            
-            
         }
-        
-        
-        
-        //show save message
         
     }
     
