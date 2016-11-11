@@ -47,7 +47,7 @@
                                     <color key="titleColor" red="0.72799410994764391" green="0.12485653001310969" blue="0.189405807083562" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ucj-n6-SHo" kind="show" id="Ro0-iC-xdn"/>
+                                    <segue destination="Ucj-n6-SHo" kind="showDetail" id="nzj-UD-FT0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I77-sZ-Ytt">
