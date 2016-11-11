@@ -68,5 +68,9 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Use your location to show you on the map.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow app to access your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow app to access your gallery</string>
 </dict>
 </plist>

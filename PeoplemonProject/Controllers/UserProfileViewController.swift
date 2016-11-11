@@ -91,7 +91,8 @@ class UserProfileViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func saveNewInfo(_ sender: Any) {
+    @IBAction func saveUserInfo(_ sender: Any) {
+    
         
         guard let fullName = fullNameText.text, fullName != "" else {
             //show error

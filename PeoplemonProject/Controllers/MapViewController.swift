@@ -86,9 +86,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let checkIn = People(coordinate: coordinate)
             WebServices.shared.postObject(checkIn, completion: { (object, error) in
                 if let error = error {
-                   // self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                    // self.present(Utils.createAlert(message: error), animated: true, completion: nil)
                 }else{
-                   // self.present(Utils.createAlert("Wonderful!", message: "You are checked in."),  animated: true, completion: nil)
+                    // self.present(Utils.createAlert("Wonderful!", message: "You are checked in."),  animated: true, completion: nil)
                     
                 }
             })
@@ -160,18 +160,29 @@ extension MapViewController: MKMapViewDelegate {
         }
         let reuseId = "pin"
         
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if pinView == nil {
-           
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = false
-            pinView!.animatesDrop = false
-            
-        } else{
-            pinView!.annotation = annotation
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            //look up User
+            if let mapPin = annotation as? MapPin{
+                if let image = Utils.stringToImage(str: mapPin.people?.avatarBase64){
+                    let resizedImage = Utils.resizeImage(image: image, maxSize: 20)
+                    pinView?.image = resizedImage
+                    pinView?.contentMode = .scaleToFill
+                    pinView?.clipsToBounds = false
+                    pinView?.layer.borderWidth = 2
+                    pinView?.layer.borderColor = UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor
+                }else{
+                    pinView?.image = nil
+                }
+                
+            }
         }
         return pinView
+        
     }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let mapPin = view.annotation as? MapPin, let people = mapPin.people, let name = people.userName, let userId = people.userId {
             let alert = UIAlertController(title: "Catch User", message: "Catch\(name)?", preferredStyle: .alert)
@@ -201,4 +212,4 @@ extension MapViewController: MKMapViewDelegate {
 
 
 
-//table row //endpoint for caught , 
+//table row //endpoint for caught ,
