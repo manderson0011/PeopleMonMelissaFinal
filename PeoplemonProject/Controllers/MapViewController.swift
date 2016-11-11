@@ -50,6 +50,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }
         loadMap()
     }
+    
+    
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations: [CLLocation]){
         
         let myArea = MKCoordinateRegionMakeWithDistance(self.locationManager.location!.coordinate, 500, 500)
