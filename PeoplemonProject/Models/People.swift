@@ -228,22 +228,4 @@ class People: NetworkModel {
     }
 }
 
-/*
- func dateString() -> String {
- if let date = Date {
- return date.toString(.custom(Constants.monthDayYear))
- }
- return ""
- }
- 
- func dateDay() -> String {
- if let date = Date {
- if date.isThisWeek() {
- return date.weekdayToString()
- } else {
- return dateString()
- }
- }
- return ""
- }
- */
+
