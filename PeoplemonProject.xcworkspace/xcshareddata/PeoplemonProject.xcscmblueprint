@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D7820CCCACA1F68644146385A186188128294DC3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D7820CCCACA1F68644146385A186188128294DC3" : 9223372036854775807,
+    "EEF2538E82CD6E88E3D255DCF801CF2364DAEDCD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0145C750-56CC-4B0C-A2C3-C6731580B297",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D7820CCCACA1F68644146385A186188128294DC3" : "PeoplemonProject\/",
+    "EEF2538E82CD6E88E3D255DCF801CF2364DAEDCD" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PeoplemonProject",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PeoplemonProject.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/manderson0011\/PeopleMonMelissaFinal.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D7820CCCACA1F68644146385A186188128294DC3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/manderson0011\/Peoplemon.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EEF2538E82CD6E88E3D255DCF801CF2364DAEDCD"
+    }
+  ]
+}
