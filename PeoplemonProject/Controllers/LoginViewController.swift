@@ -9,73 +9,40 @@
 import UIKit
 import MBProgressHUD
 
-class LogInViewController: UIViewController {
-    
-    @IBOutlet weak var userNameTextField: UITextField!
-    
+class LoginViewController: UIViewController {
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
-    @IBAction func LogInTab(_ sender: Any) {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
-        guard let email = userNameTextField.text, email != "" else {
-            //show earror
-            let alert = Utils.createAlert("Login Error", message: "Please provide a user name", dismissButtonTitle: "Close")
-            present(alert, animated: true, completion: nil)
+    @IBAction func loginTapped(sender: AnyObject) {
+        guard let email = emailTextField.text, email != "" else {
+            present(Utils.createAlert(title: "Login Error", message: "Please provide your email"), animated: true, completion: nil)
             return
         }
         
-        guard let password = passwordTextField.text , password != ""
-            else{
-                let alert = Utils.createAlert("Login Error", message: "Please provide a password", dismissButtonTitle: "Close")
-                present(alert, animated: true, completion: nil)
-                return
+        guard let password = passwordTextField.text, password != "" else {
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a password"), animated: true, completion: nil)
+            return
         }
         
         MBProgressHUD.showAdded(to: view, animated: true)
-        
-        let user = User(email: email, password: password, grantType: "password")
-        
-        UserStore.shared.login(user) { (success, error) in
+        let user = User(email: email, password: password)
+        UserStore.shared.login(loginUser: user) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            
-            if success{
+            if success {
                 self.dismiss(animated: true, completion: nil)
-                
-            } else if let error = error{
+            } else if let error = error {
                 self.present(Utils.createAlert(message: error), animated: true, completion: nil)
             } else {
                 self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
             }
         }
-        
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
-
-
-
-
-

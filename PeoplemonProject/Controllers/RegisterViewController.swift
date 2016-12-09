@@ -10,98 +10,52 @@ import UIKit
 import MBProgressHUD
 
 class RegisterViewController: UIViewController {
-    
-    @IBOutlet weak var userNameTextField: UITextField!
-    
+    @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-
+    @IBOutlet weak var confirmTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func submitRegistration(_ sender: Any) {
-        //validate user input
-        guard let fullName = userNameTextField.text, fullName != "" else {
-            //show earror
-            let alert = Utils.createAlert("Login Error", message: "Please provide a user name", dismissButtonTitle: "Close")
-            present(alert, animated: true, completion: nil)
+    @IBAction func registerTapped(sender: AnyObject) {
+        guard let fullName = fullNameTextField.text, fullName != "" else {
+            present(Utils.createAlert(title: "Login Error", message: "Please provide your name"), animated: true, completion: nil)
             return
         }
-        print("I am here")
         
-        guard let email = emailTextField.text , email != "" && Utils.isValidEmail(email)
-            else{
-                let alert = Utils.createAlert("Login Error", message: "Please provide a valid email address", dismissButtonTitle: "Close")
-                present(alert, animated: true, completion: nil)
-                return
+        guard let email = emailTextField.text, email != "" && Utils.isValidEmail(testStr: email) else {
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a valid email address"), animated: true, completion: nil)
+            return
         }
         
-        
-        guard let password = passwordTextField.text , password != ""
-            else{
-                let alert = Utils.createAlert("Login Error", message: "Please provide a password", dismissButtonTitle: "Close")
-                present(alert, animated: true, completion: nil)
-                return
+        guard let password = passwordTextField.text, password != "" else {
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a password"), animated: true, completion: nil)
+            return
         }
         
-        guard let confirm = confirmPasswordTextField.text , password == confirm
-            
-            else {
-                present(Utils.createAlert("Login Error", message: "Passwords do not Match"), animated: true, completion: nil)
-                return
+        guard let confirm = confirmTextField.text, password == confirm else {
+            present(Utils.createAlert(title: "Login Error", message: "Passwords do not match"), animated: true, completion: nil)
+            return
         }
-        
-        
-        // Going to go ahead with the register
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
-        let user = User(Email: email, fullName: fullName, AvatarBase64: "placeholder", Password: password)
-        
-        UserStore.shared.register(user) { (success, error) in
+        let user = User(email: email, password: password, fullName: fullName)
+        UserStore.shared.register(registerUser: user) { (success, error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            
-            if success{
+            if success {
                 self.dismiss(animated: true, completion: nil)
-                
-            }else if let error = error{
+            } else if let error = error {
                 self.present(Utils.createAlert(message: error), animated: true, completion: nil)
-            }else {
+            } else {
                 self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
-                print("Made it to the end of register.")
-                
             }
         }
     }
-
-
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
-
-

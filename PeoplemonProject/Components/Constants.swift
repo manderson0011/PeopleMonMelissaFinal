@@ -8,107 +8,60 @@
 import Foundation
 import UIKit
 
+import UIKit
+
 struct Constants {
-    // Step 16: Add monthDayYear
-    static let monthDayYear = "MM/dd/yyyy"
-    
-    // Step 7: Add keychain strings
-    public static let keychainIdentifier = "ProjectPeoplemonKeychain"
+    public static let keychainIdentifier = "PeoplemonKeychain"
     public static let authTokenExpireDate = "authTokenExpireDate"
     public static let authToken = "authToken"
-    static let apiKey = "iOS301november2016"
+    static let apiKey = "iOSandroid301november2016"
     static let radius = 100.0
+    static let serverImageSize: CGFloat = 80
+    static let pinImageSize: CGFloat = 16
     
+    static let nearbyRadius = 500.0
     
+    static let userRadius = "User Radius"
     
-    // JSON Constants
     struct JSON {
         static let unknownError = "An Unknown Error Has Occurred"
         static let processingError = "There was an error processing the response"
-    
     }
     
-    
-    // Step 10: User Constants
-    struct People {
-        
+    struct User {
         static let id = "Id"
         static let email = "Email"
-        static let userId = "UserId"
-        static let username = "userName"
         static let fullName = "FullName"
- 
-        static let created = "2016-11-03T20:44:12.608Z"
-        static let conversationId = "conversationId"
-        static let recipientId = "recipientId"
-        static let reipientName = "recipientName"
-        static let lastMessage = "lastMessage"
-        static let message = "message"
-        static let messageCount = "messageCount"
-        static let senderId = "senderId"
-        static let senderName = "senderName"
-        static let recipiantAvatar = "recipiantAvatar"
-        static let senderAvatar = "senderAvatar"
-        
-        static let avatarBase64 = "AvatarBase64"
-        static let oldPassword = "OldPassword"
-        static let newPassword = "NewPassword"
-        static let confirmPassword = "ConfirmPassword"
+        static let password = "password"
+        static let apiKey = "ApiKey"
+        static let profileImage = "ProfileBase64Image"
+        static let username = "username"
+        static let grantType = "grant_type"
+        static let token = "access_token"
+        static let expirationDate = ".expires"
         static let hasRegistered = "HasRegistered"
         static let loginProvider = "LoginProvider"
-        
-        static let AvatarBase64 = "AvatarBase64"
-        static let senderAvatarBase64 = "senderAvatarBase64"
-        static let recipientAvatarBase64 = "recipientAvatarBase64"
-        static let recipientName = "recipientName"
-        
-        static let LastCheckInLongitude = "0"
-        static let LastCheckInLatitude = "0"
-        static let LastCheckInDateTime = "0"
-        
-        
-        static let apiKey = "ApiKey"
-        static let token = "access_token"
-        static let grantType = "password"
-        static let expiration = ".expires"
-
-        static let userID = "UserId"
+        static let avatarBase64 = "AvatarBase64"
+        static let latitude = "LastCheckInLatitude"
+        static let longitude = "LastCheckInLongitude"
+    }
+    
+    struct Person {
+        static let userId = "UserId"
         static let userName = "UserName"
-        static let password = "password"
-        
-        static let caughtUserId = "CaughtUserId"
-        static let radiusInMeters = "RadiusInMeters"
-        
-        static let changePassword = "changepassword"
-        static let setPassword = "setPassword"
-        static let longitude = "Longitude"
         static let latitude = "Latitude"
-        
-     
-    }
-    
-    
-}
-
-// MARK: - Colors
-// Step 14: UIColor extension and
-extension UIColor {
-    public class func rgba(red: NSInteger, green: NSInteger, blue: NSInteger, alpha: Float = 1.0) -> UIColor {
-        return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: CGFloat(alpha))
+        static let longitude = "Longitude"
+        static let created = "Created"
+        static let radius = "radiusInMeters"
+        static let caughtUserId = "CaughtUserId"
+        static let avatar = "AvatarBase64"
     }
 }
 
-struct ColorPalette {
-    static let PositiveColor = UIColor.rgba(red: 15, green: 181, blue: 46)
-    static let NegativeColor = UIColor.rgba(red: 219, green: 31, blue: 31)
-    static let BlueColor = UIColor.rgba(red: 12, green: 35, blue: 64)
-    static let GoldColor = UIColor.rgba(red: 201, green: 151, blue: 0)
-    static let calendarCellColor = UIColor.rgba(red: 0, green: 0, blue: 0, alpha: 0.1)
-    static let calendarTodayColor = UIColor.rgba(red: 12, green: 35, blue: 64, alpha: 0.3)
-    static let calendarBorderColor = UIColor.rgba(red: 12, green: 35, blue: 64, alpha: 0.8)
+enum Images : String {
+    case Avatar
+    
+    func image() -> UIImage {
+        return UIImage(named: self.rawValue)!
+    }
 }
-
-
-
-
-

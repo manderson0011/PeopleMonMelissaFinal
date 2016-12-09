@@ -1,16 +1,15 @@
 //
-//  CaughtTableViewController.swift
+//  CaughtViewController.swift
 //  PeoplemonProject
 //
-//  Created by Melissa Anderson on 11/10/16.
+//  Created by Melissa Anderson on 12/3/16.
 //  Copyright © 2016 Melissa Anderson. All rights reserved.
 //
 
 import UIKit
 
-class CaughtTableViewController: UITableViewController {
     
-
+    class CaughtViewController: UITableViewController {
         var caught: [Person] = []
         
         override func viewDidLoad() {

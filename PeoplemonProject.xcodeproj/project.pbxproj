@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A08CB571DD664AD0009B070 /* UserProf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A08CB561DD664AD0009B070 /* UserProf.swift */; };
+		2A717FD91DFA7A0C00DD1FDF /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FD81DFA7A0C00DD1FDF /* CircleImage.swift */; };
+		2A717FDB1DFA7ACD00DD1FDF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FDA1DFA7ACD00DD1FDF /* Person.swift */; };
+		2A717FDD1DFA7C4600DD1FDF /* PersonCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FDC1DFA7C4600DD1FDF /* PersonCellTableViewCell.swift */; };
+		2A717FDF1DFA7C7D00DD1FDF /* CaughtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FDE1DFA7C7D00DD1FDF /* CaughtViewController.swift */; };
+		2A717FE11DFA7D2400DD1FDF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FE01DFA7D2400DD1FDF /* ProfileViewController.swift */; };
+		2A717FE31DFA7DFB00DD1FDF /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A717FE21DFA7DFB00DD1FDF /* SegueHandlerType.swift */; };
 		2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BE71DD152CE0070CCEA /* AppDelegate.swift */; };
 		2AC65BEA1DD152CE0070CCEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BE91DD152CE0070CCEA /* ViewController.swift */; };
 		2AC65BED1DD152CE0070CCEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65BEB1DD152CE0070CCEA /* Main.storyboard */; };
 		2AC65BEF1DD152CE0070CCEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65BEE1DD152CE0070CCEA /* Assets.xcassets */; };
 		2AC65BF21DD152CE0070CCEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65BF01DD152CE0070CCEA /* LaunchScreen.storyboard */; };
 		2AC65BFB1DD153AE0070CCEA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BFA1DD153AE0070CCEA /* User.swift */; };
-		2AC65BFD1DD153CC0070CCEA /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65BFC1DD153CC0070CCEA /* People.swift */; };
 		2AC65C011DD1540C0070CCEA /* Webservices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C001DD1540C0070CCEA /* Webservices.swift */; };
 		2AC65C031DD1542C0070CCEA /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C021DD1542C0070CCEA /* NetworkModel.swift */; };
 		2AC65C051DD154400070CCEA /* WebservicesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C041DD154400070CCEA /* WebservicesExtension.swift */; };
@@ -25,18 +29,19 @@
 		2AC65C111DD154F00070CCEA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C101DD154F00070CCEA /* RegisterViewController.swift */; };
 		2AC65C141DD156860070CCEA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65C131DD156860070CCEA /* Login.storyboard */; };
 		2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C161DD26ED80070CCEA /* MapViewController.swift */; };
-		2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */; };
 		2AC65C1C1DD3B2B80070CCEA /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */; };
 		2AC65C1E1DD4F7090070CCEA /* paintsville.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 2AC65C1D1DD4F7090070CCEA /* paintsville.gpx */; };
-		2AC65C261DD519170070CCEA /* CaughtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C251DD519170070CCEA /* CaughtTableViewCell.swift */; };
-		2AC65C281DD51A6E0070CCEA /* CaughtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C271DD51A6E0070CCEA /* CaughtTableViewController.swift */; };
-		2AC65C2A1DD55F5E0070CCEA /* ImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC65C291DD55F5E0070CCEA /* ImageViewViewController.swift */; };
 		410B9FC9B6E7D94A0E792A7F /* Pods_PeoplemonProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2024CDD26CF25AA831899F4C /* Pods_PeoplemonProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplemonProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A08CB561DD664AD0009B070 /* UserProf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProf.swift; path = Components/UserProf.swift; sourceTree = "<group>"; };
+		2A717FD81DFA7A0C00DD1FDF /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		2A717FDA1DFA7ACD00DD1FDF /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = Models/Person.swift; sourceTree = "<group>"; };
+		2A717FDC1DFA7C4600DD1FDF /* PersonCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonCellTableViewCell.swift; path = Controllers/PersonCellTableViewCell.swift; sourceTree = "<group>"; };
+		2A717FDE1DFA7C7D00DD1FDF /* CaughtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaughtViewController.swift; path = Controllers/CaughtViewController.swift; sourceTree = "<group>"; };
+		2A717FE01DFA7D2400DD1FDF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
+		2A717FE21DFA7DFB00DD1FDF /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Controllers/SegueHandlerType.swift; sourceTree = "<group>"; };
 		2AC65BE41DD152CE0070CCEA /* PeoplemonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplemonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC65BE71DD152CE0070CCEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AC65BE91DD152CE0070CCEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +50,6 @@
 		2AC65BF11DD152CE0070CCEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AC65BF31DD152CE0070CCEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AC65BFA1DD153AE0070CCEA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
-		2AC65BFC1DD153CC0070CCEA /* People.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = People.swift; path = Models/People.swift; sourceTree = "<group>"; };
 		2AC65C001DD1540C0070CCEA /* Webservices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Webservices.swift; path = Networking/Webservices.swift; sourceTree = "<group>"; };
 		2AC65C021DD1542C0070CCEA /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkModel.swift; path = Networking/NetworkModel.swift; sourceTree = "<group>"; };
 		2AC65C041DD154400070CCEA /* WebservicesExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebservicesExtension.swift; path = Networking/WebservicesExtension.swift; sourceTree = "<group>"; };
@@ -57,13 +61,9 @@
 		2AC65C131DD156860070CCEA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		2AC65C151DD156A10070CCEA /* ProjectPeoplemon.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ProjectPeoplemon.entitlements; sourceTree = "<group>"; };
 		2AC65C161DD26ED80070CCEA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Controllers/MapViewController.swift; sourceTree = "<group>"; };
-		2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = Controllers/UserProfileViewController.swift; sourceTree = "<group>"; };
 		2AC65C1A1DD38D6D0070CCEA /* PeoplemonProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PeoplemonProject.entitlements; sourceTree = "<group>"; };
 		2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPin.swift; path = Components/MapPin.swift; sourceTree = "<group>"; };
 		2AC65C1D1DD4F7090070CCEA /* paintsville.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = paintsville.gpx; sourceTree = "<group>"; };
-		2AC65C251DD519170070CCEA /* CaughtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaughtTableViewCell.swift; path = Controllers/CaughtTableViewCell.swift; sourceTree = "<group>"; };
-		2AC65C271DD51A6E0070CCEA /* CaughtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaughtTableViewController.swift; sourceTree = "<group>"; };
-		2AC65C291DD55F5E0070CCEA /* ImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewViewController.swift; sourceTree = "<group>"; };
 		D8AA33DC2AFE4DD25B82A716 /* Pods-PeoplemonProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D4DF0F311B5FB3D035257D /* Pods-PeoplemonProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonProject/Pods-PeoplemonProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,8 +122,8 @@
 		2AC65BF91DD153900070CCEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2AC65BFC1DD153CC0070CCEA /* People.swift */,
 				2AC65BFA1DD153AE0070CCEA /* User.swift */,
+				2A717FDA1DFA7ACD00DD1FDF /* Person.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -145,7 +145,8 @@
 				2AC65C071DD154640070CCEA /* Constants.swift */,
 				2AC65C0B1DD154890070CCEA /* UserStore.swift */,
 				2AC65C1B1DD3B2B80070CCEA /* MapPin.swift */,
-				2A08CB561DD664AD0009B070 /* UserProf.swift */,
+				2A717FD81DFA7A0C00DD1FDF /* CircleImage.swift */,
+				2A717FE21DFA7DFB00DD1FDF /* SegueHandlerType.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -156,10 +157,9 @@
 				2AC65C0E1DD154DB0070CCEA /* LoginViewController.swift */,
 				2AC65C101DD154F00070CCEA /* RegisterViewController.swift */,
 				2AC65C161DD26ED80070CCEA /* MapViewController.swift */,
-				2AC65C181DD2BF610070CCEA /* UserProfileViewController.swift */,
-				2AC65C251DD519170070CCEA /* CaughtTableViewCell.swift */,
-				2AC65C271DD51A6E0070CCEA /* CaughtTableViewController.swift */,
-				2AC65C291DD55F5E0070CCEA /* ImageViewViewController.swift */,
+				2A717FDC1DFA7C4600DD1FDF /* PersonCellTableViewCell.swift */,
+				2A717FDE1DFA7C7D00DD1FDF /* CaughtViewController.swift */,
+				2A717FE01DFA7D2400DD1FDF /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -323,20 +323,20 @@
 				2AC65C031DD1542C0070CCEA /* NetworkModel.swift in Sources */,
 				2AC65C011DD1540C0070CCEA /* Webservices.swift in Sources */,
 				2AC65C0A1DD154740070CCEA /* Utils.swift in Sources */,
-				2AC65C261DD519170070CCEA /* CaughtTableViewCell.swift in Sources */,
-				2AC65C281DD51A6E0070CCEA /* CaughtTableViewController.swift in Sources */,
+				2A717FDD1DFA7C4600DD1FDF /* PersonCellTableViewCell.swift in Sources */,
+				2A717FE31DFA7DFB00DD1FDF /* SegueHandlerType.swift in Sources */,
 				2AC65C111DD154F00070CCEA /* RegisterViewController.swift in Sources */,
-				2AC65BFD1DD153CC0070CCEA /* People.swift in Sources */,
 				2AC65BEA1DD152CE0070CCEA /* ViewController.swift in Sources */,
 				2AC65C1C1DD3B2B80070CCEA /* MapPin.swift in Sources */,
+				2A717FD91DFA7A0C00DD1FDF /* CircleImage.swift in Sources */,
 				2AC65C171DD26ED80070CCEA /* MapViewController.swift in Sources */,
 				2AC65BE81DD152CE0070CCEA /* AppDelegate.swift in Sources */,
-				2A08CB571DD664AD0009B070 /* UserProf.swift in Sources */,
-				2AC65C2A1DD55F5E0070CCEA /* ImageViewViewController.swift in Sources */,
+				2A717FDF1DFA7C7D00DD1FDF /* CaughtViewController.swift in Sources */,
 				2AC65C0C1DD154890070CCEA /* UserStore.swift in Sources */,
-				2AC65C191DD2BF610070CCEA /* UserProfileViewController.swift in Sources */,
 				2AC65BFB1DD153AE0070CCEA /* User.swift in Sources */,
 				2AC65C051DD154400070CCEA /* WebservicesExtension.swift in Sources */,
+				2A717FDB1DFA7ACD00DD1FDF /* Person.swift in Sources */,
+				2A717FE11DFA7D2400DD1FDF /* ProfileViewController.swift in Sources */,
 				2AC65C081DD154640070CCEA /* Constants.swift in Sources */,
 				2AC65C0F1DD154DB0070CCEA /* LoginViewController.swift in Sources */,
 			);

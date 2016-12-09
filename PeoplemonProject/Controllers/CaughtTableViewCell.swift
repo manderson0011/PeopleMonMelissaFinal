@@ -10,17 +10,25 @@ import UIKit
 
 class CaughtTableViewCell: UITableViewCell {
 
-    weak var caught: People!
-
-    @IBOutlet weak var caughtLabel: UILabel!
-
+    @IBOutlet weak var avatar: CircleImage!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
-    var people: People!
+    var person: Person!
     
-    func setUpCell(people: People){
-        self.people = people
-        caughtLabel.text = people.userName
-    
+    func setupCell(person: Person) {
+        self.person = person
+        
+        nameLabel.text = person.username
+        if let createdDate = person.created {
+            let date = Date(fromString: createdDate, format: .iso8601(nil))
+            dateLabel.text = date.toString(.custom("M/d/yyyy h:m:s a"))
+        }
+        if let image = Utils.imageFromString(imageString: person.avatar) {
+            avatar.image = image
+        } else {
+            avatar.image = Images.Avatar.image()
+        }
+        avatar.setupView(size: 60)
     }
-
 }

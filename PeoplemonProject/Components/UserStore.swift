@@ -6,50 +6,67 @@
 //  Copyright © 2016 Melissa Anderson. All rights reserved.
 //
 
+
 import Foundation
-import UIKit
 
-
+protocol UserStoreDelegate: class {
+    func userLoggedIn()
+}
 
 class UserStore {
     static let shared = UserStore()
     
-    var selectedImage: UIImage?
-    var user:User?
-    private init() {}
+    var user: User? {
+        didSet {
+            if let _ = user {
+                delegate?.userLoggedIn()
+            }
+        }
+    }
+    weak var delegate: UserStoreDelegate?
     
-    //give me a user then i will log them in and tell you when they are logged in
-    
-    
-    func login(_ loginUser: User, completion: @escaping (_ success:Bool, _ error: String?) -> Void) {
-        
-        //call web server to login
-        WebServices.shared.authUser(loginUser) {(user, error) in
+    func login(loginUser: User, completion:@escaping (_ success: Bool, _ error: String?) -> Void) {
+        WebServices.shared.authUser(loginUser) { (user, error) -> () in
             if let user = user {
-                WebServices.shared.setAuthToken(user.token, expiration: user.expiration)
-                completion(true, nil)
-            }else{
+                WebServices.shared.setAuthToken(user.token, expiration: user.expirationDate)
+                self.getUserInfo(infoUser: loginUser, completion: completion)
+            } else {
                 completion(false, error)
             }
         }
     }
-    func register(_ registerUser: User, completion:@escaping
-        (_ success: Bool, _ error: String?) -> ()) {
-        
-        WebServices.shared.authUser(registerUser) {(user, error) in
-            if let user = user {
-                WebServices.shared.setAuthToken(user.token, expiration: user.expiration)
-                completion(true, nil)
-            }else{
+    
+    func register(registerUser: User, completion:@escaping (_ success: Bool, _ error: String?) -> Void) {
+        WebServices.shared.registerUser(registerUser) { (user, error) -> () in
+            if let _ = user {
+                registerUser.requestType = User.RequestType.login
+                self.login(loginUser: registerUser, completion: { (success, error) in
+                    completion(success, error)
+                })
+            } else {
                 completion(false, error)
-                
             }
         }
     }
     
-    func logout(_ completion:()->()) {
-        WebServices.shared.clearUserAuthToken()
-        completion()
+    func getUserInfo(infoUser: User, completion:@escaping (_ success: Bool, _ error: String?) -> Void) {
+        infoUser.requestType = User.RequestType.userInfo
+        WebServices.shared.getObject(infoUser) { (user, error) in
+            if let user = user {
+                self.user = user
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    func logout(completion:@escaping () -> Void) {
+        let logoutUser = User()
+        logoutUser.requestType = User.RequestType.logout
+        WebServices.shared.postObject(logoutUser) { (object, error) in
+            WebServices.shared.clearUserAuthToken()
+            completion()
+        }
     }
 }
-
