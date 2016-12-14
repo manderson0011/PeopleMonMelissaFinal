@@ -42,18 +42,29 @@ class Utils {
         UIGraphicsEndImageContext()
         return newImage
     }
-    
+    // image from string
     class func imageFromString(imageString: String?) -> UIImage? {
         if let imageString = imageString, let imageData = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters) {
             return UIImage(data: imageData as Data)
         }
         return Images.Avatar.image()
     }
-    
-    class func stringFromImage(image: UIImage?) -> String {
-        if let image = image, let imageData = UIImagePNGRepresentation(image) {
-            return imageData.base64EncodedString()
+    //image to string
+    class func stringToImage(str: String?) -> UIImage?{
+        
+        if let str = str{
+            
+            let imageData = NSData(base64Encoded: str, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+            if imageData == nil{
+                return nil
+            }
+            if let image = UIImage(data: imageData as! Data){
+                return image
+            }
+            return nil
+            
+        }else{
+            return #imageLiteral(resourceName: "DefaultImage")
         }
-        return ""
     }
 }

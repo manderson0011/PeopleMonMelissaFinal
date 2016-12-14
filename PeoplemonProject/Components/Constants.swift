@@ -11,7 +11,7 @@ import UIKit
 import UIKit
 
 struct Constants {
-    public static let keychainIdentifier = "PeoplemonKeychain"
+    public static let keychainIdentifier = "ProjectPeoplemonKeychain"
     public static let authTokenExpireDate = "authTokenExpireDate"
     public static let authToken = "authToken"
     static let apiKey = "iOSandroid301november2016"
@@ -32,6 +32,7 @@ struct Constants {
         static let id = "Id"
         static let email = "Email"
         static let fullName = "FullName"
+        
         static let password = "password"
         static let apiKey = "ApiKey"
         static let profileImage = "ProfileBase64Image"
@@ -62,6 +63,6 @@ enum Images : String {
     case Avatar
     
     func image() -> UIImage {
-        return UIImage(named: self.rawValue)!
+        return #imageLiteral(resourceName: "DefaultImage")
     }
 }

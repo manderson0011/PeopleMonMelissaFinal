@@ -48,25 +48,24 @@ class ProfileViewController: UIViewController {
         guard let name = nameField.text, name != "" else {
             self.present(Utils.createAlert(message: "You must provide a name"), animated: true, completion: nil)
             return
-        }
-        
-        let resizedImage = Utils.resizeImage(image: avatar.image!, maxSize: Constants.serverImageSize)
-        let imageString = Utils.stringFromImage(image: resizedImage)
-        let user = User(fullName: name, avatar: imageString)
-        
-        MBProgressHUD.showAdded(to: view, animated: true)
-        WebServices.shared.postObject(user) { (updatedUser, error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let error = error {
-                self.present(Utils.createAlert(message: error), animated: true, completion: nil)
-            } else {
-                UserStore.shared.user?.fullName = name
-                UserStore.shared.user?.avatar = imageString
-            }
+    }
+    
+    let resizedImage = Utils.resizeImage(image: avatar.image!, maxSize: Constants.serverImageSize)
+        let imageString = Utils.stringToImage(str: Images.Avatar.rawValue)
+    let user = User(fullName: name, avatar: Images.Avatar.rawValue)
+    
+    MBProgressHUD.showAdded(to: view, animated: true)
+    WebServices.shared.postObject(user) { (updatedUser, error) in
+    MBProgressHUD.hide(for: self.view, animated: true)
+    if let error = error {
+    self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+    } else {
+    UserStore.shared.user?.fullName = name
+    UserStore.shared.user?.avatar = Images.Avatar.rawValue
         }
     }
 }
-
+}
 extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -80,3 +79,4 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         }
     }
 }
+

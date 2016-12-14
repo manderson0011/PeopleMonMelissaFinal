@@ -1,4 +1,4 @@
-//
+// OLD SUBMITTED
 //  MapViewController.swift
 //  PeoplemonProject
 //
@@ -281,11 +281,11 @@ extension MapViewController: MKMapViewDelegate {
         let circleOverlay = MKCircleRenderer(overlay: overlay)
         if let userOverlay = userOverlay, userOverlay.coordinate.latitude == overlay.coordinate.latitude && userOverlay.coordinate.longitude == overlay.coordinate.longitude {
             circleOverlay.lineWidth = 1
-            circleOverlay.strokeColor = UIColor.lightGray
-            circleOverlay.fillColor = UIColor.lightGray.withAlphaComponent(0.5)
+            circleOverlay.strokeColor = UIColor.darkGray
+            circleOverlay.fillColor = UIColor.darkGray.withAlphaComponent(0.5)
         } else {
             circleOverlay.lineWidth = 0
-            circleOverlay.fillColor = UIColor.lightGray.withAlphaComponent(0.25)
+            circleOverlay.fillColor = UIColor.darkGray.withAlphaComponent(0.25)
         }
         return circleOverlay
     }
